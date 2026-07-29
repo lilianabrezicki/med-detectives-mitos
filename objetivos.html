@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoja de Ruta | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.oa-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin:16px 0; }
+.oa-tarjeta{ background:#fff; border:1px solid var(--arena-oscuro); border-left:6px solid var(--dorado); border-radius:8px; padding:14px 16px; cursor:pointer; }
+.oa-tarjeta h3{ margin:4px 0 8px; font-size:1rem; }
+.oa-tarjeta__num{ font-family:var(--fuente-titulo); color:var(--azul-noche); font-size:1.3rem; }
+.oa-tarjeta__detalle{ display:none; font-size:.88rem; margin-top:8px; border-top:1px dashed var(--arena-oscuro); padding-top:8px; }
+.oa-tarjeta.abierta .oa-tarjeta__detalle{ display:block; }
+.oa-tarjeta[aria-expanded="true"]{ border-left-color:var(--verde-exito); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    <div class="med-header__textos"><h1 class="med-header__titulo">Detectives de Mitos</h1><p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy?</p></div>
+    <div class="med-header__acciones"><button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO)">🔊 Escuchar audio</button></div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol id="breadcrumbs-lista"></ol></nav>
+  <div class="progreso-caso"><div class="progreso-caso__etiqueta"><span id="progreso-texto"></span></div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso"><div class="progreso-caso__barra" id="progreso-barra"></div></div></div>
+</header>
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso"><h2>🗂️ Expediente del caso</h2><ol id="expediente-nav-lista"></ol></nav>
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-3 — HOJA DE RUTA</span>
+      <h1 id="titulo-mision">El Plan de Investigación</h1>
+      <div class="objetivo-caja"><strong>Objetivo de esta pantalla:</strong> conocer, en forma de misiones, los cinco objetivos de aprendizaje del caso. 
+      <div class="detective-dialogo">
+        <div class="detective-dialogo__avatar" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#F5F1E3"/><path d="M14 42c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="27" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="31" x2="37" y2="38" stroke="#1A237E" stroke-width="3"/><path d="M18 19 L46 19 L40 11 L24 11 Z" fill="#1A237E"/></svg></div>
+        <p class="detective-dialogo__texto"><strong>Jefe/a de Agencia:</strong> "Aquí tienes las cinco misiones de este caso. Haz clic en cada una para leer en qué consiste."</p>
+      </div>
+
+      <div class="oa-grid" id="oa-grid">
+        <article class="oa-tarjeta" tabindex="0" role="button" aria-expanded="false" data-num="1">
+          <span class="oa-tarjeta__num">Misión 1</span>
+          <h3>Evolución del héroe</h3>
+          <p class="microtexto">Comparar héroes y heroínas clásicos con figuras modernas.</p>
+          <div class="oa-tarjeta__detalle">Analizarás la evolución de la figura del héroe comparándola con héroes y heroínas clásicos y modernos, identificando qué rasgos se valoran en distintas épocas y culturas. La trabajarás en la <strong>Galería de Sospechosos</strong>.</div>
+        </article>
+        <article class="oa-tarjeta" tabindex="0" role="button" aria-expanded="false" data-num="2">
+          <span class="oa-tarjeta__num">Misión 2</span>
+          <h3>Herramientas gramaticales</h3>
+          <p class="microtexto">Clasificar adjetivos, verbos y construcciones nominales.</p>
+          <div class="oa-tarjeta__detalle">Clasificarás y aplicarás categorías gramaticales (adjetivos, construcciones nominales, verbos) para caracterizar personajes al crear tu propio héroe o heroína. La trabajarás en el <strong>Laboratorio Gramatical</strong>.</div>
+        </article>
+        <article class="oa-tarjeta" tabindex="0" role="button" aria-expanded="false" data-num="3">
+          <span class="oa-tarjeta__num">Misión 3</span>
+          <h3>El Viaje del Héroe</h3>
+          <p class="microtexto">Interpretar el Monomito en relatos épicos.</p>
+          <div class="oa-tarjeta__detalle">Interpretarás el "Viaje del Héroe" explicando acciones, motivaciones y transformaciones del protagonista, a través de una producción escrita. La trabajarás en <strong>Las Huellas del Camino</strong>.</div>
+        </article>
+        <article class="oa-tarjeta" tabindex="0" role="button" aria-expanded="false" data-num="4">
+          <span class="oa-tarjeta__num">Misión 4</span>
+          <h3>Comprensión multimodal</h3>
+          <p class="microtexto">Integrar texto, imagen y audio en el análisis del mito.</p>
+          <div class="oa-tarjeta__detalle">Comprenderás y representarás la figura del héroe integrando información de textos, imágenes y otros recursos multimodales. La trabajarás en <strong>El Caso Hércules</strong>.</div>
+        </article>
+        <article class="oa-tarjeta" tabindex="0" role="button" aria-expanded="false" data-num="5">
+          <span class="oa-tarjeta__num">Misión 5</span>
+          <h3>Producción creativa</h3>
+          <p class="microtexto">Crear y revisar tu propio héroe o heroína.</p>
+          <div class="oa-tarjeta__detalle">Aplicarás recursos descriptivos para mejorar la caracterización de tu héroe, en la producción inicial y en la revisión de tu texto creativo. La trabajarás en el <strong>Informe del Caso</strong> y en la <strong>Autoevaluación</strong>.</div>
+        </article>
+      </div>
+
+
+      <div class="container-wrapper-genially" style="position: relative; min-height: 400px; max-width: 100%;"><video class="loader-genially" autoplay="autoplay" loop="loop" playsinline="playsInline" muted="muted" style="position: absolute;top: 45%;left: 50%;transform: translate(-50%, -50%);width: 80px;height: 80px;margin-bottom: 10%"><source src="https://static.genially.com/resources/loader-default-rebranding.mp4" type="video/mp4" />Your browser does not support the video tag.</video><div id="6a5d420e6cef104b445bc411" class="genially-embed" style="margin: 0px auto; position: relative; height: auto; width: 100%;"></div></div><script>(function (d) { var js, id = "genially-embed-js", ref = d.getElementsByTagName("script")[0]; if (d.getElementById(id)) { return; } js = d.createElement("script"); js.id = id; js.async = true; js.src = "https://view.genially.com/static/embed/embed.js"; ref.parentNode.insertBefore(js, ref); }(document));</script>
+      <div class="navegacion-pasos">
+        <a class="btn btn-secundario" id="nav-anterior" href="mision-reclutamiento.html">⟵ Anterior</a>
+        <a class="btn btn-dorado" id="nav-siguiente" href="mapa-conceptual.html">Siguiente ⟶</a>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('Haz clic (o presiona Enter) sobre cada tarjeta de misión para desplegar su descripción completa.')">🔎</button>
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script>
+const TEXTO_AUDIO = "Aquí tienes las cinco misiones de este caso. Haz clic en cada una para leer en qué consiste y qué pantalla del expediente le corresponde.";
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>
+medInicializarPagina('objetivos');
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.oa-tarjeta').forEach(t => {
+    const alternar = () => {
+      const abierta = t.classList.toggle('abierta');
+      t.setAttribute('aria-expanded', abierta ? 'true' : 'false');
+    };
+    t.addEventListener('click', alternar);
+    t.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); alternar(); } });
+  });
+});
+</script>
+</body>
+</html>

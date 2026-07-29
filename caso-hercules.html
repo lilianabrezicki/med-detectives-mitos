@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Caso Hércules | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    <div class="med-header__textos"><h1 class="med-header__titulo">Detectives de Mitos</h1><p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy?</p></div>
+    <div class="med-header__acciones"><button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO)">🔊 Escuchar lectura guiada</button></div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol id="breadcrumbs-lista"></ol></nav>
+  <div class="progreso-caso"><div class="progreso-caso__etiqueta"><span id="progreso-texto"></span></div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso"><div class="progreso-caso__barra" id="progreso-barra"></div></div></div>
+</header>
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso"><h2>🗂️ Expediente del caso</h2><ol id="expediente-nav-lista"></ol></nav>
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-7 — MISIÓN 3 (OA3 y OA4)</span>
+      <h1 id="titulo-mision">Expediente de Campo: el Mito de Hércules</h1>
+      <div class="objetivo-caja"><strong>Objetivo de esta pantalla:</strong> comprender el mito de Hércules identificando acciones y transformaciones del protagonista, integrando texto, imagen y audio. </div>
+
+      <div class="actividad" aria-labelledby="act7-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">🖼️</span><h2 class="actividad__titulo" id="act7-titulo">Actividad 7 — Observa con atención la Imagen</h2></div>
+        <figure class="recurso-media">
+                  <img src="img/Leon.webp" alt="Silueta de un guerrero con arco frente a un enorme león dorado, en un paisaje rocoso al atardecer." class="achicarImg">
+
+          <!-- <span class="recurso-media__icono" aria-hidden="true">🖼️</span>
+          <figcaption><strong>Imagen sugerida:</strong> silueta de un guerrero enfrentando a un león de melena dorada al atardecer, estilo ilustración dramática.
+          <br><em>Texto alternativo:</em> "Silueta de un guerrero con arco frente a un enorme león dorado, en un paisaje rocoso al atardecer."</figcaption> -->
+        </figure>
+        <div class="campo-formulario">
+          <label for="p7">Antes de leer: al ver esta imagen, ¿qué crees que va a pasar en este mito?</label>
+          <textarea id="p7"></textarea>
+        </div>
+        <button class="btn btn-primario" id="btn-p7">Iniciar la lectura</button>
+        <div class="feedback" id="feedback-7" aria-live="polite"></div>
+      </div>
+
+      <div class="actividad" id="lectura-mito" aria-labelledby="act8-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">📖</span><h2 class="actividad__titulo" id="act8-titulo">Actividad 8 — Lectura con autoexplicación</h2></div>
+        <p class="microtexto">Vas a leer el expediente en tres tramos. En cada pausa, escribe tu propia idea antes de que se desbloquee el siguiente fragmento: eso es lo que hace un buen detective de mitos.</p>
+
+        <div class="texto-resaltable">
+
+          <!-- Bloque 1 -->
+          <div class="bloque-lectura" id="bloque-8-1" data-bloque="1">
+            <div class="bloque-lectura__audio">
+              <button class="btn btn-secundario btn-audio-bloque" type="button" data-bloque="1" aria-pressed="false">🔊 Escuchar este fragmento</button>
+            </div>
+            <h3 class="mito-titulo">Hércules y el león de Nemea</h3>
+
+            <p class="microtexto" data-parrafo="1">Un temible león está asolando a Nemea, devora personas y rebaños.</p>
+            <p class="microtexto" data-parrafo="1">El león tiene la piel invulnerable y habita una caverna con dos salidas.</p>
+
+            <button class="btn btn-secundario" style="margin:4px 0 14px;" onclick="medAbrirGlosario('nemea')">🔍 ¿Qué es Nemea?</button>
+
+            <p class="microtexto" data-parrafo="1">Nació de dos monstruos: Equidna y Ortro y su descendencia es también monstruosa.</p>
+            <p class="microtexto" data-parrafo="1">Capturar a la fiera es el primero de los trabajos que el medroso Euristeo impone a Hércules.</p>
+            <p class="microtexto" data-parrafo="1">Sin temor, a pecho descubierto y con la voluntad de vencer, el héroe parte hacia Nemea. Solo piensa en su próximo enemigo.</p>
+            <p class="microtexto" data-parrafo="1">Llegado a su destino, empieza a buscar al león por todas partes.</p>
+            <p class="microtexto" data-parrafo="1">La gente no quiere ni siquiera pronunciar el nombre de la fiera, como si el nombrarla pudiera hacerla aparecer de un momento a otro. Hércules penetra en la floresta.</p>
+            <p class="microtexto" data-parrafo="1">Marcha días y días. Y no halla nada.</p>
+            <p class="microtexto" data-parrafo="1">Por fin, un día, da con una caverna parecida a la descripción hecha por Euristeo.</p>
+            <p class="microtexto" data-parrafo="1">Allí está el escondijo del animal. Escondido detrás de un arbusto, ve como el león sale de su gruta, llevando en el hocico una presa.</p>
+            <p class="microtexto" data-parrafo="1">Hércules se aproxima por detrás del animal, pero no lo ataca, espera a que el enemigo se vuelva y lo encare, ojo a ojo, miedo a miedo. Entonces dispara una flecha, pero no consigue herirlo: la piel del león es invulnerable.</p>
+
+            <button class="btn btn-primario btn-continuar" id="btn-abrir-pregunta-1" type="button" data-siguiente-bloque="bloque-8-2">🤔 Pausa de detective: responde para seguir leyendo</button>
+          </div>
+
+          <!-- Bloque 2 (oculto hasta responder la pregunta 1) -->
+          <div class="bloque-lectura oculto" id="bloque-8-2" data-bloque="2" tabindex="-1">
+            <div class="bloque-lectura__audio">
+              <button class="btn btn-secundario btn-audio-bloque" type="button" data-bloque="2" aria-pressed="false">🔊 Escuchar este fragmento</button>
+            </div>
+            <p class="microtexto" data-parrafo="2">El ataque, entretanto, atemoriza a la fiera y la lleva a refugiarse en la caverna.</p>
+            <p class="microtexto" data-parrafo="2">Rápidamente, el héroe penetra también en la guarida y cierra una de las salidas.</p>
+            <p class="microtexto" data-parrafo="2">Después embiste contra el adversario, empuñando la maza.</p>
+            <p class="microtexto" data-parrafo="2">El león retrocede, hasta quedar enteramente pegado a la pared y siempre agitando la maza, Hércules se aproxima cada vez más, sujeta al animal con sus manos poderosas y se entabla una feroz lucha cuerpo a cuerpo, lo domina.</p>
+            <p class="microtexto" data-parrafo="2">Finalmente, lo estrangula y lo arroja al suelo.</p>
+            <p class="microtexto" data-parrafo="2">Cuando se convence de que el león ya no respira, usa las mismas garras de la fiera para arrancarle piel y cabeza, que más tarde le servirán de armadura y casco.</p>
+            <p class="microtexto" data-parrafo="2">En posesión de sus nuevas armas, feliz y cansado, Hércules lleva el cadáver a la puerta de la ciudad.</p>
+            <p class="microtexto" data-parrafo="2">El heraldo corre hasta el rey para contarle la victoria del héroe en su primer trabajo.</p>
+            <p class="microtexto" data-parrafo="2">Y Júpiter transforma al león en una constelación que marca en el cielo, perpetuamente, la gloria de Hércules.</p>
+
+            <button class="btn btn-primario btn-continuar" id="btn-abrir-pregunta-2" type="button" data-siguiente-bloque="bloque-8-3">🤔 Pausa de detective: responde para seguir</button>
+          </div>
+
+          <!-- Bloque 3: organizador visual + informe final (oculto hasta responder la pregunta 2) -->
+          <div class="bloque-lectura oculto" id="bloque-8-3" data-bloque="3" tabindex="-1">
+
+            <div class="organizador-antes-despues">
+              <h3>🗂️ Organiza las pistas: Antes / Después</h3>
+              <p class="microtexto">Antes de escribir tu informe, completa el cuadro con lo que cambió en este trabajo de Hércules.</p>
+              <table class="organizador-tabla">
+                <thead><tr><th scope="col">Momento</th><th scope="col">Antes de enfrentar al león</th><th scope="col">Después de vencerlo</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Herramienta usada</th>
+                    <td>
+                      <select id="organizador-herramienta-antes" aria-label="Herramienta que usó Hércules antes">
+                        <option value="">Elige…</option>
+                        <option value="arco">Arco y flechas</option>
+                        <option value="fuerza">Su propia fuerza física</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select id="organizador-herramienta-despues" aria-label="Herramienta que usó Hércules después">
+                        <option value="">Elige…</option>
+                        <option value="arco">Arco y flechas</option>
+                        <option value="fuerza">Su propia fuerza física</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Apariencia de Hércules</th>
+                    <td>
+                      <select id="organizador-apariencia-antes" aria-label="Apariencia de Hércules antes">
+                        <option value="">Elige…</option>
+                        <option value="sin-piel">Sin la piel ni la cabeza del león</option>
+                        <option value="con-piel">Con la piel y la cabeza del león como armadura y casco</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select id="organizador-apariencia-despues" aria-label="Apariencia de Hércules después">
+                        <option value="">Elige…</option>
+                        <option value="sin-piel">Sin la piel ni la cabeza del león</option>
+                        <option value="con-piel">Con la piel y la cabeza del león como armadura y casco</option>
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn btn-secundario" id="btn-verificar-organizador" type="button">Verificar cuadro</button>
+              <div class="feedback" id="feedback-organizador" aria-live="polite"></div>
+            </div>
+
+            <div class="campo-formulario">
+              <label for="p8a">1. Con tus palabras: ¿cómo cambió Hércules su estrategia durante este trabajo?</label>
+              <textarea id="p8a" aria-describedby="contador-8a" placeholder="Al principio Hércules intentó... pero cuando descubrió que las armas no servían..."></textarea>
+              <p class="contador-caracteres" id="contador-8a">0 caracteres</p>
+            </div>
+            <div class="campo-formulario">
+              <label for="p8b">2. ¿Qué transformación tuvo la apariencia de Hércules al final de este trabajo?</label>
+              <textarea id="p8b" aria-describedby="contador-8b" placeholder="Al salir de la cueva, Hércules..."></textarea>
+              <p class="contador-caracteres" id="contador-8b">0 caracteres</p>
+            </div>
+            <button class="btn btn-primario" id="btn-p8">Registrar hallazgo</button>
+            <div class="feedback" id="feedback-8" aria-live="polite"></div>
+          </div>
+
+          <!-- Bloque 4: cierre, comparación con la predicción de la Actividad 7 -->
+          <div class="bloque-lectura oculto cierre-prediccion" id="bloque-8-4" tabindex="-1">
+            <h3>🔁 Cierra el expediente: ¿acertaste tu predicción?</h3>
+            <p class="microtexto">Antes de leer, en la Actividad 7, escribiste esta hipótesis al ver la imagen del león:</p>
+            <p class="cierre-prediccion__hipotesis" id="cierre-hipotesis-texto">(No escribiste una hipótesis en la Actividad 7.)</p>
+            <div class="campo-formulario">
+              <label for="p8-cierre-opcion">¿Tu predicción se cumplió?</label>
+              <select id="p8-cierre-opcion">
+                <option value="">Elige…</option>
+                <option value="si">Sí, se cumplió</option>
+                <option value="parcial">Se cumplió en parte</option>
+                <option value="no">No, pasó algo distinto</option>
+              </select>
+              <label for="p8-cierre-texto" style="margin-top:10px;">Compara brevemente tu hipótesis con lo que realmente pasó en el mito.</label>
+              <textarea id="p8-cierre-texto" placeholder="Yo pensé que... y en el mito en realidad..."></textarea>
+            </div>
+            <button class="btn btn-primario" id="btn-cierre-prediccion">Guardar comparación</button>
+            <div class="feedback" id="feedback-cierre" aria-live="polite"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="actividad" aria-labelledby="act9-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">🗂️</span><h2 class="actividad__titulo" id="act9-titulo">Actividad 9 — Comprensión lectora: Verdadero o Falso</h2></div>
+        <p class="microtexto">Arrastra cada afirmación a la columna correcta según lo que leíste. Si usas teclado, selecciona la columna de destino en el menú desplegable de cada tarjeta.</p>
+        <div class="clasificacion-columnas">
+          <div>
+            <h4>✅ Verdadero</h4>
+            <div class="dnd-lista" id="col-verdadero" aria-label="Columna Verdadero"></div>
+          </div>
+          <div>
+            <h4>❌ Falso</h4>
+            <div class="dnd-lista" id="col-falso" aria-label="Columna Falso"></div>
+          </div>
+        </div>
+        <div class="dnd-banco" id="banco-hercules" aria-label="Banco de afirmaciones sin clasificar">
+          <div class="dnd-ficha" data-id="a1">La piel del león era invulnerable a las flechas.
+            <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-verdadero">Verdadero</option><option value="col-falso">Falso</option></select></div>
+          <div class="dnd-ficha" data-id="a2">Hércules venció al león disparándole muchas flechas.
+            <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-verdadero">Verdadero</option><option value="col-falso">Falso</option></select></div>
+          <div class="dnd-ficha" data-id="a3">Hércules atrapó al león dentro de una cueva de dos entradas.
+            <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-verdadero">Verdadero</option><option value="col-falso">Falso</option></select></div>
+          <div class="dnd-ficha" data-id="a4">Al final, Hércules usó la piel del león como armadura.
+            <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-verdadero">Verdadero</option><option value="col-falso">Falso</option></select></div>
+          <div class="dnd-ficha" data-id="a5">Hércules venció al león usando una espada mágica.
+            <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-verdadero">Verdadero</option><option value="col-falso">Falso</option></select></div>
+        </div>
+        <button class="btn btn-primario" id="btn-verificar-9">Verificar clasificación</button>
+        <div class="feedback" id="feedback-9" aria-live="polite"></div>
+      </div>
+
+      <div class="navegacion-pasos">
+        <a class="btn btn-secundario" id="nav-anterior" href="viaje-del-heroe.html">⟵ Anterior</a>
+        <a class="btn btn-dorado" id="nav-siguiente" href="detective-gramatical.html">Siguiente ⟶</a>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('Vuelve a leer el párrafo señalado antes de responder cada pregunta de autoexplicación. No hay problema si necesitas leer dos veces.')">🔎</button>
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+<div class="modal-overlay" id="modal-autoexplicacion" role="dialog" aria-modal="true" aria-labelledby="modal-autoexp-titulo">
+  <div class="modal-caja" tabindex="-1">
+    <button class="modal-cerrar" aria-label="Cerrar ventana" id="modal-autoexp-cerrar">✕</button>
+    <h3 id="modal-autoexp-titulo">🤔 Pregunta de autoexplicación</h3>
+    <p id="modal-autoexp-texto"></p>
+    <div class="campo-formulario">
+      <label for="modal-autoexp-respuesta">Tu respuesta</label>
+      <textarea id="modal-autoexp-respuesta" placeholder="Escribe tu idea antes de seguir leyendo..."></textarea>
+    </div>
+    <p class="modal-autoexp-aviso" id="modal-autoexp-aviso" role="alert" style="display:none;">Escribe al menos una idea breve antes de continuar.</p>
+    <button class="btn btn-dorado" id="modal-autoexp-continuar" type="button">Guardar y continuar leyendo</button>
+  </div>
+</div>
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script>
+const TEXTO_AUDIO = "Hércules se encontró frente al león de Nemea. El rugido de la fiera hacía temblar el suelo. Tomó su arco y disparó una flecha, pero esta rebotó en el pelaje dorado como si fuera piedra. Alto ahí, detective: analiza la escena. Por qué crees que Hércules no puede usar sus flechas. Continúa la lectura para descubrir cómo usará su ingenio.";
+
+/* ---------- Guardado de respuestas de la Actividad 8 ----------
+   Los campos con id (p7, p8a, p8b, los selects del organizador, p8-cierre-*)
+   ya se guardan automáticamente vía medConfigurarAutoguardado() en nav.js.
+   Solo hace falta guardar a mano el textarea del modal de autoexplicación,
+   porque reutiliza el mismo id para las dos preguntas. */
+
+/* ---------- Preguntas de autoexplicación (con caja de respuesta real) ---------- */
+const MED_PREGUNTAS_AUTOEXP = {
+  1: {
+    texto: '¿Por qué crees que Hércules no puede vencer al león usando sus flechas? ¿Qué nos dice esto sobre su enemigo? Piénsalo antes de seguir leyendo.',
+    clave: 'autoexplicacion-1'
+  },
+  2: {
+    texto: 'Hércules se acerca al león empuñando la maza, pero termina venciéndolo al sujetarlo con sus propias manos y estrangularlo. ¿Por qué crees que, al final, necesitó su fuerza física y no solo sus armas para lograrlo?',
+    clave: 'autoexplicacion-2'
+  }
+};
+let MED_PREGUNTA_AUTOEXP_ACTUAL = null;
+
+function medAbrirModalAutoexplicacion(numeroPregunta, botonOrigen){
+  const pregunta = MED_PREGUNTAS_AUTOEXP[numeroPregunta];
+  if(!pregunta) return;
+  MED_PREGUNTA_AUTOEXP_ACTUAL = { numero: numeroPregunta, boton: botonOrigen };
+  const overlay = document.getElementById('modal-autoexplicacion');
+  document.getElementById('modal-autoexp-texto').textContent = pregunta.texto;
+  const respuesta = document.getElementById('modal-autoexp-respuesta');
+  respuesta.value = '';
+  document.getElementById('modal-autoexp-aviso').style.display = 'none';
+  overlay.classList.add('abierto');
+  setTimeout(() => respuesta.focus(), 50);
+}
+
+function medCerrarModalAutoexplicacion(){
+  document.getElementById('modal-autoexplicacion').classList.remove('abierto');
+}
+
+function medRevelarBloque(idBloque){
+  const bloque = document.getElementById(idBloque);
+  if(!bloque) return;
+  bloque.classList.remove('oculto');
+  bloque.focus({preventScroll:false});
+  bloque.scrollIntoView({behavior:'smooth', block:'start'});
+  /* Si es el bloque de cierre, mostramos la hipótesis que el detective escribió en la Actividad 7 */
+  if(idBloque === 'bloque-8-4'){
+    const p7 = document.getElementById('p7');
+    const destino = document.getElementById('cierre-hipotesis-texto');
+    if(p7 && destino && p7.value.trim().length > 0){
+      destino.textContent = '“' + p7.value.trim() + '”';
+    }
+  }
+}
+
+document.getElementById('modal-autoexp-cerrar').addEventListener('click', medCerrarModalAutoexplicacion);
+document.getElementById('modal-autoexplicacion').addEventListener('click', (e) => {
+  if(e.target.id === 'modal-autoexplicacion') medCerrarModalAutoexplicacion();
+});
+document.getElementById('modal-autoexp-continuar').addEventListener('click', () => {
+  const respuesta = document.getElementById('modal-autoexp-respuesta');
+  const aviso = document.getElementById('modal-autoexp-aviso');
+  if(respuesta.value.trim().length < 5){
+    aviso.style.display = 'block';
+    respuesta.focus();
+    return;
+  }
+  aviso.style.display = 'none';
+  const actual = MED_PREGUNTA_AUTOEXP_ACTUAL;
+  if(actual){
+    const pregunta = MED_PREGUNTAS_AUTOEXP[actual.numero];
+    medGuardarRespuesta('caso-hercules', pregunta.clave,
+      `Autoexplicación ${actual.numero}: ${pregunta.texto}`, respuesta.value.trim());
+    medMarcarLogro(pregunta.clave);
+    /* Marcamos el botón que abrió el modal como "respondido" y revelamos el bloque siguiente */
+    if(actual.boton){
+      const siguienteBloque = actual.boton.dataset.siguienteBloque;
+      actual.boton.outerHTML = '<p class="bloque-lectura__respondido">✅ Respondiste esta pausa de detective.</p>';
+      if(siguienteBloque) medRevelarBloque(siguienteBloque);
+    }
+  }
+  medCerrarModalAutoexplicacion();
+});
+
+document.getElementById('btn-abrir-pregunta-1').addEventListener('click', function(){
+  medAbrirModalAutoexplicacion(1, this);
+});
+document.getElementById('btn-abrir-pregunta-2').addEventListener('click', function(){
+  medAbrirModalAutoexplicacion(2, this);
+});
+
+/* ---------- Audio por fragmento, con resaltado del bloque mientras se lee ---------- */
+document.querySelectorAll('.btn-audio-bloque').forEach(boton => {
+  boton.addEventListener('click', function(){
+    const numeroBloque = this.dataset.bloque;
+    const bloque = document.getElementById('bloque-8-' + numeroBloque);
+    if(!bloque || !('speechSynthesis' in window)) return;
+
+    /* Si ya está leyendo este fragmento, lo detenemos */
+    if(this.getAttribute('aria-pressed') === 'true'){
+      window.speechSynthesis.cancel();
+      this.setAttribute('aria-pressed','false');
+      this.innerHTML = '🔊 Escuchar este fragmento';
+      bloque.classList.remove('leyendo-activo');
+      return;
+    }
+
+    /* Cancelamos cualquier otra lectura en curso (de este botón o del botón de cabecera) */
+    window.speechSynthesis.cancel();
+    document.querySelectorAll('.btn-audio-bloque[aria-pressed="true"]').forEach(b => {
+      b.setAttribute('aria-pressed','false'); b.innerHTML = '🔊 Escuchar este fragmento';
+    });
+    document.querySelectorAll('.bloque-lectura.leyendo-activo').forEach(b => b.classList.remove('leyendo-activo'));
+    const botonCabecera = document.querySelector('.btn-audio');
+    if(botonCabecera){ botonCabecera.setAttribute('aria-pressed','false'); botonCabecera.innerHTML = '🔊 Escuchar lectura guiada'; }
+
+    const parrafos = [...bloque.querySelectorAll('p[data-parrafo]')].map(p => p.textContent.trim());
+    const texto = parrafos.join(' ');
+    const u = new SpeechSynthesisUtterance(texto);
+    u.lang = 'es-ES';
+    this.setAttribute('aria-pressed','true');
+    this.innerHTML = '⏸️ Detener fragmento';
+    bloque.classList.add('leyendo-activo');
+    u.onend = () => {
+      this.setAttribute('aria-pressed','false');
+      this.innerHTML = '🔊 Escuchar este fragmento';
+      bloque.classList.remove('leyendo-activo');
+    };
+    window.speechSynthesis.speak(u);
+  });
+});
+
+/* ---------- Organizador visual Antes / Después ---------- */
+document.getElementById('btn-verificar-organizador').addEventListener('click', () => {
+  const campos = {
+    'organizador-herramienta-antes': 'arco',
+    'organizador-herramienta-despues': 'fuerza',
+    'organizador-apariencia-antes': 'sin-piel',
+    'organizador-apariencia-despues': 'con-piel'
+  };
+  let todosCorrectos = true;
+  Object.keys(campos).forEach(id => {
+    const select = document.getElementById(id);
+    select.classList.remove('select-correcto','select-incorrecto');
+    if(!select.value){ todosCorrectos = false; return; }
+    if(select.value === campos[id]) select.classList.add('select-correcto');
+    else { select.classList.add('select-incorrecto'); todosCorrectos = false; }
+  });
+  if(todosCorrectos){
+    medMostrarFeedback('feedback-organizador', true,
+      'Muy bien organizado: antes del combate Hércules usaba armas (flecha y maza), y al final venció con su fuerza física; y su apariencia cambió al usar la piel y la cabeza del león como armadura y casco. Ahora usa este cuadro como guía para escribir tu informe.', '');
+  } else {
+    medMostrarFeedback('feedback-organizador', false, '',
+      'Todavía hay alguna celda sin completar o incorrecta (marcada en rojo). Revisa los dos párrafos del segundo fragmento y vuelve a intentarlo.');
+  }
+});
+
+/* ---------- Informe final de la Actividad 8, con feedback específico según el contenido ---------- */
+function medConfigurarRespuestaHercules(){
+  const p8a = document.getElementById('p8a');
+  const p8b = document.getElementById('p8b');
+  const contador8a = document.getElementById('contador-8a');
+  const contador8b = document.getElementById('contador-8b');
+  const boton = document.getElementById('btn-p8');
+
+  p8a.addEventListener('input', () => contador8a.textContent = `${p8a.value.length} caracteres`);
+  p8b.addEventListener('input', () => contador8b.textContent = `${p8b.value.length} caracteres`);
+
+  boton.addEventListener('click', () => {
+    const textoA = p8a.value.trim();
+    const textoB = p8b.value.trim();
+
+    if(textoA.length < 15 || textoB.length < 15){
+      medMostrarFeedback('feedback-8', false, '',
+        'Tu informe todavía es muy breve, detective. Desarrolla un poco más cada respuesta (al menos 15 caracteres en cada una) antes de continuar.');
+      return;
+    }
+
+    const textoCompleto = (textoA + ' ' + textoB).toLowerCase();
+    const mencionaFuerza = /fuerza|estrangul|abraz|brazos|cuerpo/.test(textoCompleto);
+    const mencionaArmas = /arco|flecha|arma/.test(textoCompleto);
+    const mencionaPiel = /piel|armadura|trofeo/.test(textoCompleto);
+
+    if(mencionaFuerza && mencionaPiel){
+      medMostrarFeedback('feedback-8', true,
+        'Excelente hallazgo: identificaste que Hércules pasó de usar armas (flecha y maza) a usar la fuerza y la estrategia de su propio cuerpo, y que terminó transformando su apariencia al usar la piel y la cabeza del león como armadura y casco. Ahora compara tu predicción inicial y luego clasifica las afirmaciones sobre el mito.', '');
+      medGuardarRespuesta('caso-hercules', 'informe-8-completo', 'Informe completo (Actividad 8)', textoA + ' | ' + textoB);
+      medMarcarLogro('lectura-hercules');
+      boton.disabled = true;
+      p8a.setAttribute('aria-readonly','true');
+      p8b.setAttribute('aria-readonly','true');
+      medRevelarBloque('bloque-8-4');
+    } else {
+      let pista = 'Buen intento, detective, pero tu informe está incompleto. ';
+      if(!mencionaFuerza) pista += 'No mencionaste que Hércules dejó de usar armas y venció al león con su propia fuerza física. ';
+      if(!mencionaPiel) pista += 'Tampoco mencionaste que, al final, usó la piel y la cabeza del león como armadura y casco. ';
+      pista += 'Vuelve a leer el segundo fragmento y completa tu respuesta.';
+      medMostrarFeedback('feedback-8', false, '', pista);
+    }
+  });
+}
+medConfigurarRespuestaHercules();
+
+/* ---------- Cierre: comparación con la predicción de la Actividad 7 ---------- */
+document.getElementById('btn-cierre-prediccion').addEventListener('click', () => {
+  const opcion = document.getElementById('p8-cierre-opcion').value;
+  const texto = document.getElementById('p8-cierre-texto').value.trim();
+  if(!opcion){
+    medMostrarFeedback('feedback-cierre', false, '', 'Elige primero si tu predicción se cumplió, se cumplió en parte o no se cumplió.');
+    return;
+  }
+  medMarcarLogro('cierre-prediccion-hercules');
+  medMostrarFeedback('feedback-cierre', true,
+    'Buen trabajo comparando tu hipótesis con el desenlace real del mito: esta es una destreza clave de todo buen detective de historias. Ya puedes continuar con la Actividad 9 para clasificar las afirmaciones sobre el mito.', '');
+  document.getElementById('btn-cierre-prediccion').disabled = true;
+});
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>
+medInicializarPagina('caso-hercules');
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btn-p7').addEventListener('click', () => {
+    medMostrarFeedback('feedback-7', true,
+      '¡Buena hipótesis, detective! Ahora comprueba si acertaste leyendo el expediente completo del mito.', '');
+  });
+  medInicializarClasificacion('banco-hercules', ['col-verdadero','col-falso']);
+  const solucion9 = { a1:'col-verdadero', a2:'col-falso', a3:'col-verdadero', a4:'col-verdadero', a5:'col-falso' };
+  document.getElementById('btn-verificar-9').addEventListener('click', () => {
+    medVerificarClasificacion(['col-verdadero','col-falso'], 'feedback-9', solucion9, 'comprension-hercules');
+  });
+
+  /* ---------- Restaurar el avance de la Actividad 8 si el detective ya la había hecho antes ---------- */
+  function medRestaurarAvanceHercules(){
+    if(medTieneLogro('autoexplicacion-1')){
+      const bloque2 = document.getElementById('bloque-8-2');
+      if(bloque2) bloque2.classList.remove('oculto');
+      const boton1 = document.getElementById('btn-abrir-pregunta-1');
+      if(boton1) boton1.outerHTML = '<p class="bloque-lectura__respondido">✅ Respondiste esta pausa de detective.</p>';
+    }
+    if(medTieneLogro('autoexplicacion-2')){
+      const bloque3 = document.getElementById('bloque-8-3');
+      if(bloque3) bloque3.classList.remove('oculto');
+      const boton2 = document.getElementById('btn-abrir-pregunta-2');
+      if(boton2) boton2.outerHTML = '<p class="bloque-lectura__respondido">✅ Respondiste esta pausa de detective.</p>';
+    }
+    if(medTieneLogro('lectura-hercules')){
+      const bloque4 = document.getElementById('bloque-8-4');
+      if(bloque4){ bloque4.classList.remove('oculto'); }
+      const cierreHipotesis = document.getElementById('cierre-hipotesis-texto');
+      const p7 = document.getElementById('p7');
+      if(cierreHipotesis && p7 && p7.value.trim().length > 0) cierreHipotesis.textContent = '“' + p7.value.trim() + '”';
+      const btnP8 = document.getElementById('btn-p8');
+      if(btnP8) btnP8.disabled = true;
+      const p8aEl = document.getElementById('p8a'); if(p8aEl) p8aEl.setAttribute('aria-readonly','true');
+      const p8bEl = document.getElementById('p8b'); if(p8bEl) p8bEl.setAttribute('aria-readonly','true');
+    }
+    if(medTieneLogro('cierre-prediccion-hercules')){
+      const btnCierre = document.getElementById('btn-cierre-prediccion');
+      if(btnCierre) btnCierre.disabled = true;
+    }
+  }
+  medRestaurarAvanceHercules();
+  document.addEventListener('medDetectiveCambiado', medRestaurarAvanceHercules);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe del Caso | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    <div class="med-header__textos"><h1 class="med-header__titulo">Detectives de Mitos</h1><p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy?</p></div>
+    <div class="med-header__acciones"><button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO)">🔊 Escuchar audio</button></div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol id="breadcrumbs-lista"></ol></nav>
+  <div class="progreso-caso"><div class="progreso-caso__etiqueta"><span id="progreso-texto"></span></div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso"><div class="progreso-caso__barra" id="progreso-barra"></div></div></div>
+</header>
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso"><h2>🗂️ Expediente del caso</h2><ol id="expediente-nav-lista"></ol></nav>
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-9 — MISIÓN FINAL (OA5)</span>
+      <h1 id="titulo-mision">Informe Final: Tu Héroe Actual</h1>
+      <div class="objetivo-caja"><strong>Objetivo de esta pantalla:</strong> diseñar un héroe o heroína propia que resuelva un problema real de la actualidad, aplicando valores, la estructura del Viaje del Héroe y recursos gramaticales descriptivos.</div>
+
+      <div class="detective-dialogo">
+        <div class="detective-dialogo__avatar" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#F5F1E3"/><path d="M14 42c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="27" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="31" x2="37" y2="38" stroke="#1A237E" stroke-width="3"/><path d="M18 19 L46 19 L40 11 L24 11 Z" fill="#1A237E"/></svg></div>
+        <p class="detective-dialogo__texto"><strong>Jefe/a de Agencia:</strong> "Caso casi cerrado, detective. Ahora te toca a ti: diseña un héroe o heroína capaz de resolver un problema de nuestro mundo hoy. Aplica todo lo que has investigado sobre valores, el viaje y el uso de adjetivos."</p>
+      </div>
+
+      <div class="actividad" aria-labelledby="act12-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">🦸</span><h2 class="actividad__titulo" id="act12-titulo">Actividad 12 — Creación de tu Héroe o Heroína</h2></div>
+        <p class="microtexto">Completa tu ficha de creación. Puedes redactar en varias líneas; recuerda usar <button class="termino-clave" onclick="medAbrirGlosario('adjetivo')">adjetivos</button> y <button class="termino-clave" onclick="medAbrirGlosario('verbo')">verbos</button> precisos, y cuidar la <button class="termino-clave" onclick="medAbrirGlosario('cohesion')">cohesión</button> entre tus ideas.</p>
+
+        <div class="campo-formulario">
+          <label for="nombre-heroe">Nombre de tu héroe o heroína</label>
+          <input type="text" id="nombre-heroe">
+        </div>
+        <div class="campo-formulario">
+          <label for="problema">¿Qué problema actual resuelve? (ej. contaminación, soledad, desinformación, bullying)</label>
+          <input type="text" id="problema">
+        </div>
+        <div class="campo-formulario">
+          <label for="descripcion-heroe">Descripción física y de personalidad (usa al menos 3 "adjetivos", puedes volver a revisar su definición)</label>
+          <textarea id="descripcion-heroe"></textarea>
+        </div>
+        <div class="campo-formulario">
+          <label for="viaje-heroe">Cuenta brevemente su "Viaje del Héroe": su llamado, sus pruebas y su transformación</label>
+          <textarea id="viaje-heroe"></textarea>
+        </div>
+        <p class="contador-caracteres" id="contador-informe">0 caracteres en total</p>
+        <button class="btn btn-primario" id="btn-enviar-informe">Enviar borrador a revisión</button>
+        <div class="feedback" id="feedback-informe" aria-live="polite"></div>
+      </div>
+
+      <figure class="recurso-media">
+        <img src="img/Para informe.webp" alt="Formulario de ficha de personaje con espacio para nombre, dibujo y descripción, estilo expediente." class="achicarImg">
+      </figure>
+
+      <p class="microtexto"><strong>Nota sobre el feedback:</strong> esta actividad recibe una retroalimentación diferida: tu borrador se revisará en profundidad en la siguiente pantalla, la <a href="autoevaluacion.html">Autoevaluación con Rúbrica</a>, antes de la entrega definitiva.</p>
+
+      <div class="navegacion-pasos">
+        <a class="btn btn-secundario" id="nav-anterior" href="detective-gramatical.html">⟵ Anterior</a>
+        <a class="btn btn-dorado" id="nav-siguiente" href="autoevaluacion.html">Siguiente ⟶</a>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('No busques la perfección en el primer intento: escribe un borrador completo y luego lo revisarás con la rúbrica en la siguiente pantalla.')">🔎</button>
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script>
+const TEXTO_AUDIO = "Caso casi cerrado, detective. Ahora te toca a ti: diseña un héroe o heroína capaz de resolver un problema de nuestro mundo hoy. Antes de entregar tu informe, no olvides pasar por la rúbrica de control de calidad.";
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>
+medInicializarPagina('informe-final');
+document.addEventListener('DOMContentLoaded', () => {
+  const campos = ['nombre-heroe','problema','descripcion-heroe','viaje-heroe'].map(id => document.getElementById(id));
+  const contador = document.getElementById('contador-informe');
+  function actualizarContador(){
+    const total = campos.reduce((acc,c) => acc + c.value.length, 0);
+    contador.textContent = `${total} caracteres en total`;
+  }
+  campos.forEach(c => c.addEventListener('input', actualizarContador));
+  document.getElementById('btn-enviar-informe').addEventListener('click', () => {
+    const total = campos.reduce((acc,c) => acc + c.value.trim().length, 0);
+    if(total < 40){
+      medMostrarFeedback('feedback-informe', false, '',
+        'Tu ficha todavía está incompleta, detective. Un buen informe necesita nombre, problema a resolver, descripción y viaje del héroe. Completa los campos que faltan.');
+      return;
+    }
+    medMostrarFeedback('feedback-informe', true,
+      'Borrador recibido en el expediente. Buen trabajo dando forma a tu personaje. Ahora pasa a la Autoevaluación para revisar ortografía, cohesión y adecuación con la rúbrica interactiva antes de la entrega definitiva.', '');
+    medMarcarLogro('borrador-heroe');
+  });
+});
+</script>
+</body>
+</html>

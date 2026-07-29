@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratorio Gramatical | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.selector-categoria{ display:flex; gap:10px; margin:12px 0; }
+.selector-categoria button{ flex:1; }
+.selector-categoria button[aria-pressed="true"]{ outline:3px solid var(--dorado); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    <div class="med-header__textos"><h1 class="med-header__titulo">Detectives de Mitos</h1><p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy?</p></div>
+    <div class="med-header__acciones"><button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO)">🔊 Escuchar audio</button></div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol id="breadcrumbs-lista"></ol></nav>
+  <div class="progreso-caso"><div class="progreso-caso__etiqueta"><span id="progreso-texto"></span></div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso"><div class="progreso-caso__barra" id="progreso-barra"></div></div></div>
+</header>
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso"><h2>🗂️ Expediente del caso</h2><ol id="expediente-nav-lista"></ol></nav>
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-8 — MISIÓN 4 (OA2)</span>
+      <h1 id="titulo-mision">El Maletín de Herramientas: Detective Gramatical</h1>
+      <div class="objetivo-caja"><strong>Objetivo de esta pantalla:</strong> clasificar y aplicar <button class="termino-clave" onclick="medAbrirGlosario('adjetivo')">adjetivos</button> y <button class="termino-clave" onclick="medAbrirGlosario('verbo')">verbos</button> para caracterizar personajes. </div>
+
+      <div class="actividad" aria-labelledby="act10a-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">✏️</span><h2 class="actividad__titulo" id="act10a-titulo">Actividad 10.a — Micro-desafío descriptivo</h2></div>
+        <p class="microtexto">Antes de analizar el texto original, intenta describir con tus propias palabras al León de Nemea: su aspecto, su fuerza, su peligrosidad.</p>
+        <div class="campo-formulario">
+          <label for="p10a">Mi descripción del León de Nemea (usa al menos dos adjetivos):</label>
+          <textarea id="p10a" aria-describedby="contador-10a"></textarea>
+          <p class="contador-caracteres" id="contador-10a">0 caracteres</p>
+        </div>
+        <button class="btn btn-primario" id="btn-10a">Comparar con el original</button>
+        <div class="feedback" id="feedback-10a" aria-live="polite"></div>
+      </div>
+
+      <div class="actividad" aria-labelledby="act10b-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">🔦</span><h2 class="actividad__titulo" id="act10b-titulo">Actividad 10.b — Resaltado Interactivo</h2></div>
+        <p class="microtexto">Elige una categoría gramatical y luego haz clic sobre las palabras del texto que correspondan a esa categoría. Vuelve a hacer clic para quitar la marca.</p>
+        <div class="selector-categoria" role="radiogroup" aria-label="Categoría gramatical a resaltar">
+          <button class="btn btn-dorado" id="btn-cat-adjetivo" aria-pressed="true">🟨 Adjetivos</button>
+          <button class="btn btn-secundario" id="btn-cat-verbo" aria-pressed="false">🟦 Verbos</button>
+        </div>
+
+        <p class="texto-resaltable" id="texto-resaltable">
+          El <span class="palabra-resaltable" data-id="w1">enorme</span> león de Nemea
+          <span class="palabra-resaltable" data-id="w11">tenía</span> una piel
+          <span class="palabra-resaltable" data-id="w2">invulnerable</span> y un
+          <span class="palabra-resaltable" data-id="w3">feroz</span> rugido. Cuando Hércules lo
+          <span class="palabra-resaltable" data-id="w4">vio</span>, el animal
+          <span class="palabra-resaltable" data-id="w5">rugió</span> y
+          <span class="palabra-resaltable" data-id="w6">avanzó</span> hacia él con una mirada
+          <span class="palabra-resaltable" data-id="w7">salvaje</span>. Hércules
+          <span class="palabra-resaltable" data-id="w8">esquivó</span> el
+          <span class="palabra-resaltable" data-id="w12">primer</span> ataque y finalmente
+          <span class="palabra-resaltable" data-id="w9">estranguló</span> a la bestia con sus brazos
+          <span class="palabra-resaltable" data-id="w10">poderosos</span>.
+        </p>
+        <button class="btn btn-primario" id="btn-verificar-10b">Verificar resaltado</button>
+        <div class="feedback" id="feedback-10b" aria-live="polite"></div>
+      </div>
+
+      <div class="actividad" aria-labelledby="act10c-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">🗃️</span><h2 class="actividad__titulo" id="act10c-titulo">Clasificación — Maletín de Adjetivos y Verbos</h2></div>
+        <p class="microtexto">Ahora arrastra cada palabra a la columna que corresponde. Si usas teclado, elige la columna en el menú desplegable de cada ficha.</p>
+        <div class="clasificacion-columnas">
+          <div><h4>🟨 Adjetivos</h4><div class="dnd-lista" id="col-adjetivos" aria-label="Columna adjetivos"></div></div>
+          <div><h4>🟦 Verbos</h4><div class="dnd-lista" id="col-verbos" aria-label="Columna verbos"></div></div>
+        </div>
+        <div class="dnd-banco" id="banco-gramatical" aria-label="Banco de palabras">
+          <div class="dnd-ficha" data-id="feroz">feroz <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-adjetivos">Adjetivos</option><option value="col-verbos">Verbos</option></select></div>
+          <div class="dnd-ficha" data-id="invulnerable">invulnerable <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-adjetivos">Adjetivos</option><option value="col-verbos">Verbos</option></select></div>
+          <div class="dnd-ficha" data-id="rugir">rugir <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-adjetivos">Adjetivos</option><option value="col-verbos">Verbos</option></select></div>
+          <div class="dnd-ficha" data-id="atacar">atacar <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-adjetivos">Adjetivos</option><option value="col-verbos">Verbos</option></select></div>
+          <div class="dnd-ficha" data-id="poderoso">poderoso <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-adjetivos">Adjetivos</option><option value="col-verbos">Verbos</option></select></div>
+          <div class="dnd-ficha" data-id="esquivar">esquivar <select class="selector-columna" aria-label="Mover a columna"><option value="">Mover a…</option><option value="col-adjetivos">Adjetivos</option><option value="col-verbos">Verbos</option></select></div>
+        </div>
+        <button class="btn btn-primario" id="btn-verificar-clasif-gram">Verificar clasificación</button>
+        <div class="feedback" id="feedback-clasif-gram" aria-live="polite"></div>
+      </div>
+
+      <figure class="recurso-media">
+        <img src="img/Maletín.webp" alt="Maletín de herramientas de detective con compartimentos etiquetados Adjetivos y Verbos." class="achicarImg">
+
+        <!-- <span class="recurso-media__icono" aria-hidden="true">🖼️</span>
+        <figcaption><strong>Imagen sugerida:</strong> maletín de herramientas abierto con etiquetas "Adjetivos" y "Verbos" en lugar de destornilladores y llaves.
+        <br><em>Texto alternativo:</em> "Maletín de herramientas de detective con compartimentos etiquetados Adjetivos y Verbos."</figcaption> -->
+      </figure>
+
+      <!-- <div class="recurso-media">
+        <span class="recurso-media__icono" aria-hidden="true">🎧</span>
+        <div><strong>Audio sugerido — instrucción de la sección</strong>
+        <p class="recurso-media__guion">Guion: "Un buen detective necesita palabras precisas. Tu misión es resaltar todos los verbos y adjetivos que describen la lucha entre Hércules y la fiera. Estas categorías gramaticales son tus herramientas para construir el perfil de los personajes."</p></div>
+      </div> -->
+
+      <div class="navegacion-pasos">
+        <a class="btn btn-secundario" id="nav-anterior" href="caso-hercules.html">⟵ Anterior</a>
+        <a class="btn btn-dorado" id="nav-siguiente" href="informe-final.html">Siguiente ⟶</a>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('Los adjetivos describen cómo es algo o alguien (enorme, feroz). Los verbos indican una acción (rugir, atacar). Pregúntate: ¿esta palabra describe una cualidad o una acción?')">🔎</button>
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script>
+const TEXTO_AUDIO = "Un buen detective necesita palabras precisas. Tu misión es resaltar todos los verbos y adjetivos que describen la lucha entre Hércules y la fiera. Estas categorías gramaticales son tus herramientas para construir el perfil de los personajes.";
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>
+medInicializarPagina('detective-gramatical');
+document.addEventListener('DOMContentLoaded', () => {
+  medConfigurarRespuestaLibre('p10a','contador-10a','btn-10a','feedback-10a',
+    '¡Excelente hallazgo! Adjetivos como "invulnerable" o "feroz" no solo describen al León, sino que crean una atmósfera de peligro. Ahora compara tu descripción con el texto original en la actividad de resaltado.',
+    'micro-desafio-gramatical', 10);
+
+  let categoriaActiva = 'adjetivo';
+  const btnAdj = document.getElementById('btn-cat-adjetivo');
+  const btnVerbo = document.getElementById('btn-cat-verbo');
+  function actualizarBotones(){
+    btnAdj.className = categoriaActiva === 'adjetivo' ? 'btn btn-dorado' : 'btn btn-secundario';
+    btnVerbo.className = categoriaActiva === 'verbo' ? 'btn btn-dorado' : 'btn btn-secundario';
+    btnAdj.setAttribute('aria-pressed', String(categoriaActiva === 'adjetivo'));
+    btnVerbo.setAttribute('aria-pressed', String(categoriaActiva === 'verbo'));
+  }
+  btnAdj.addEventListener('click', () => { categoriaActiva = 'adjetivo'; actualizarBotones(); });
+  btnVerbo.addEventListener('click', () => { categoriaActiva = 'verbo'; actualizarBotones(); });
+  medConfigurarResaltado('texto-resaltable', () => categoriaActiva);
+
+  const solucion10b = { w1:'adjetivo', w2:'adjetivo', w3:'adjetivo', w4:'verbo', w5:'verbo', w6:'verbo', w7:'adjetivo', w8:'verbo', w9:'verbo', w10:'adjetivo', w11:'verbo', w12:'adjetivo' };
+  document.getElementById('btn-verificar-10b').addEventListener('click', () => {
+    medVerificarResaltado('texto-resaltable','feedback-10b', solucion10b, 'resaltado-gramatical');
+  });
+
+  medInicializarClasificacion('banco-gramatical', ['col-adjetivos','col-verbos']);
+  const solucionClasif = { feroz:'col-adjetivos', invulnerable:'col-adjetivos', poderoso:'col-adjetivos', rugir:'col-verbos', atacar:'col-verbos', esquivar:'col-verbos' };
+  document.getElementById('btn-verificar-clasif-gram').addEventListener('click', () => {
+    medVerificarClasificacion(['col-adjetivos','col-verbos'], 'feedback-clasif-gram', solucionClasif, 'clasificacion-gramatical');
+  });
+});
+</script>
+</body>
+</html>

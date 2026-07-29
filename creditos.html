@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Créditos | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.creditos-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media (max-width:700px){ .creditos-grid{ grid-template-columns:1fr; } }
+.paleta-muestra{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0; }
+.paleta-chip{ width:90px; text-align:center; font-size:.75rem; }
+.paleta-chip span{ display:block; height:44px; border-radius:8px; margin-bottom:4px; border:1px solid rgba(0,0,0,.1); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    <div class="med-header__textos"><h1 class="med-header__titulo">Detectives de Mitos</h1><p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy?</p></div>
+    <div class="med-header__acciones"></div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol id="breadcrumbs-lista"></ol></nav>
+  <div class="progreso-caso"><div class="progreso-caso__etiqueta"><span id="progreso-texto"></span></div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso"><div class="progreso-caso__barra" id="progreso-barra"></div></div></div>
+</header>
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso"><h2>🗂️ Expediente del caso</h2><ol id="expediente-nav-lista"></ol></nav>
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-12 — ARCHIVO CERRADO</span>
+      <h1 id="titulo-mision">Créditos del Caso</h1>
+      <p class="microtexto">¡Felicitaciones, detective! Has completado la investigación "Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy?". Aquí encontrarás el archivo completo de fundamentos, identidad visual y recursos usados en el caso.</p>
+    </section>
+
+    <!-- <section class="tarjeta" aria-labelledby="titulo-pedagogia">
+      <h2 id="titulo-pedagogia">📚 Fundamentación pedagógica</h2>
+      <p class="microtexto">Este MED fue diseñado a partir de la reformulación del REA "La figura del héroe en los mitos" (Ceibal), adoptando una articulación constructivista sostenida por la figura del detective. Cada decisión de diseño se apoya en:</p>
+      <ul>
+        <li><strong>Constructivismo:</strong> el estudiante construye el conocimiento mediante el descubrimiento inductivo (Galería de Sospechosos) y la producción activa desde el primer minuto (Misión de Reclutamiento).</li>
+        <li><strong>Aprendizaje significativo:</strong> se activan saberes previos (héroes actuales) antes de introducir los héroes clásicos, conectando lo nuevo con lo que el estudiante ya sabe.</li>
+        <li><strong>Aprendizaje multimedia de Mayer:</strong> se combinan texto, imagen y audio de forma coherente y no redundante (principio de modalidad y de coherencia), evitando saturar una misma pantalla.</li>
+        <li><strong>Carga cognitiva de Sweller:</strong> se aplica el principio de segmentación —un concepto por pantalla— y microtextos de no más de 5 líneas.</li>
+        <li><strong>Gamificación:</strong> el hilo narrativo del detective, la barra de progreso, los sellos de "caso resuelto" y las misiones numeradas dan sentido de juego y avance.</li>
+        <li><strong>Evaluación formativa:</strong> el feedback es siempre elaborativo (explica el porqué y redirige al contenido) y la rúbrica final es autoaplicable antes de la entrega.</li>
+        <li><strong>Diseño Universal para el Aprendizaje (DUA):</strong> múltiples formas de representación (texto, audio, imagen, video), de acción y expresión (arrastrar, escribir, resaltar, alternativas por teclado) y de motivación (narrativa del detective, elección de héroe favorito).</li>
+        <li><strong>Accesibilidad WCAG 2.2:</strong> texto alternativo en imágenes, contraste de color adecuado, navegación por teclado, foco visible, roles ARIA en diálogos y barras de progreso, y opción de escuchar los textos.</li>
+        <li><strong>Microlearning:</strong> cada pantalla resuelve una única misión pequeña y autocontenida.</li>
+        <li><strong>Narrativa transmedia:</strong> el caso se sostiene a través de texto, imagen, audio, video y actividades interactivas articuladas por un mismo personaje y una misma historia.</li>
+      </ul>
+    </section> -->
+
+    <section class="tarjeta" aria-labelledby="titulo-visual">
+      <h2 id="titulo-visual">🎨 Identidad visual</h2>
+      <div class="creditos-grid">
+        <div>
+          <h3>Paleta de colores</h3>
+          <div class="paleta-muestra">
+            <div class="paleta-chip"><span style="background:#1A237E;"></span>Azul Noche<br>#1A237E</div>
+            <div class="paleta-chip"><span style="background:#C5A059;"></span>Dorado<br>#C5A059</div>
+            <div class="paleta-chip"><span style="background:#F5F1E3; border:1px solid #ccc;"></span>Arena<br>#F5F1E3</div>
+            <div class="paleta-chip"><span style="background:#37474F;"></span>Gris oscuro<br>#37474F</div>
+            <div class="paleta-chip"><span style="background:#B03A2E;"></span>Rojo sello<br>#B03A2E</div>
+          </div>
+        </div>
+        <div>
+          <h3>Tipografía</h3>
+          <p style="font-family:'Special Elite'; font-size:1.2rem;">Special Elite — títulos y misiones</p>
+          <p style="font-family:'Roboto';">Roboto — cuerpo de texto y actividades</p>
+          <p class="microtexto">Ambas son tipografías de código abierto distribuidas por <a href="https://fonts.google.com">Google Fonts</a>.</p>
+        </div>
+      </div>
+      <h3>Iconografía</h3>
+      <p class="microtexto">Detective 🕵️, lupa 🔍, maletín 🧳, expediente 🗂️, huellas 👣, sellos 🎖️, carpetas 📁 — usados de forma consistente en cabeceras, menú lateral y feedback en todas las pantallas.</p>
+      <h3>Navegación</h3>
+      <p class="microtexto">Estructura lineal progresiva con migas de pan, barra de progreso y menú lateral con sellos de "misión completada" (✔). Botón de "Pistas de Detective" siempre visible en la esquina inferior derecha.</p>
+    </section>
+
+ 
+    <section class="tarjeta" aria-labelledby="titulo-accesibilidad">
+      <h2 id="titulo-accesibilidad">♿ Declaración de accesibilidad</h2>
+      <ul>
+        <li>Todas las imágenes sugeridas incluyen una propuesta de texto alternativo.</li>
+        <li>Los colores de la paleta cumplen un contraste mínimo AA de WCAG 2.2 sobre fondo Arena y Azul Noche.</li>
+        <li>Todas las actividades de arrastrar y soltar tienen una alternativa operable por teclado (botones ▲/▼ o menús desplegables).</li>
+        <li>Se incluye un botón de narración por voz (síntesis de voz del navegador) en cada pantalla.</li>
+        <li>El foco de teclado es siempre visible y los elementos interactivos tienen roles y etiquetas ARIA.</li>
+        <li>Los mensajes de retroalimentación usan <code>aria-live="polite"</code> para ser anunciados por lectores de pantalla.</li>
+        <li>Se respeta la preferencia de "reducir movimiento" del sistema operativo.</li>
+      </ul>
+    </section>
+
+    <section class="tarjeta" aria-labelledby="titulo-fuentes">
+      <h2 id="titulo-fuentes">🗂️ Fuentes y créditos</h2>
+
+      <h3>Fuentes</h3>
+      <p class="microtexto">Real Academia Española. (s.f.). <em>Héroe</em>. En <em>Diccionario de la lengua española</em>. Recuperado el 27 de julio de 2026, de <a href="https://dle.rae.es/h%C3%A9roe">https://dle.rae.es/héroe</a></p>
+      <p class="microtexto">Ceibal. (2023). <em>La figura del héroe en los mitos</em> [Recurso Educativo Abierto]. Repositorio REA de Ceibal. <a href="https://rea.ceibal.edu.uy/elp/la-figura-del-heroe-en-los-mitos/ficha.html">https://rea.ceibal.edu.uy/elp/la-figura-del-heroe-en-los-mitos/ficha.html</a></p>
+      <p class="microtexto">Brezicki, L. M. (2026). <em>Monomito. Detectives de mitos: ¿Dónde están los héroes y heroínas hoy?</em> [Video]. YouTube. <a href="https://youtu.be/DVNxzJS17y0">https://youtu.be/DVNxzJS17y0</a></p>
+      <p class="microtexto">OpenAI. (2026). <em>ChatGPT</em> (versión con generación de imágenes) [Modelo de lenguaje de gran escala]. <a href="https://chatgpt.com">https://chatgpt.com</a></p>
+      <p class="microtexto">Genially. (2026). <em>Genially</em> [Aplicación web de creación de contenidos interactivos]. <a href="https://genial.ly">https://genial.ly</a></p>
+      <p class="microtexto">Joubel. (s.f.). <em>H5P</em> [Software de código abierto para la creación de contenido interactivo]. <a href="https://h5p.org">https://h5p.org</a></p>
+      <p class="microtexto">Google Fonts. (s.f.). <em>Roboto</em> y <em>Special Elite</em> [Tipografías de código abierto]. <a href="https://fonts.google.com">https://fonts.google.com</a></p>
+
+      <h3>Créditos</h3>
+      <p class="microtexto">Este Material Educativo Digital (MED) fue elaborado a partir de la reformulación y rediseño del REA "La figura del héroe en los mitos" (Ceibal, 2023), en el marco de la asignatura <em>Materiales Educativos Digitales y Repositorios para su Almacenamiento y Recuperación</em> (2026), correspondiente a la Especialización en Tecnología Informática Aplicada a la Educación.</p>
+      <p class="microtexto">Desarrollo técnico e instruccional de la versión HTML5, con intervención del video original mediante H5P: Lic. Liliana Mabel Brezicki.</p>
+      <p class="microtexto">El tablero interactivo de la Hoja de Ruta (pantalla "El Plan de Investigación") fue elaborado con la herramienta Genially, con intervención de la autora: Lic. Liliana Mabel Brezicki.</p>
+      <p class="microtexto">Salvo indicación en contrario, las imágenes fueron generadas mediante inteligencia artificial (ChatGPT, OpenAI, 2026) a partir de instrucciones (prompts) elaboradas por la autora. Excepción: la captura utilizada en la ventana emergente de "Héroe/Heroína" (glosario) no es una imagen generada por IA, sino una captura de pantalla del sitio oficial de la Real Academia Española (dle.rae.es), incluida con fines educativos y citada en la sección Fuentes.</p>
+      <p class="microtexto">Material dirigido a estudiantes de 13 a 14 años.</p>
+
+      <h3>Licencia</h3>
+      <p class="microtexto" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" rel="license" target="_blank" aria-label="Licencia Creative Commons Atribución-CompartirIgual 4.0" style="display:inline-flex; align-items:center;">
+          <svg width="88" height="31" viewBox="0 0 88 31" role="img" aria-hidden="true" style="vertical-align:middle;">
+            <rect x="0.5" y="0.5" width="87" height="30" rx="4" fill="#ffffff" stroke="#37474F" stroke-width="1"/>
+            <circle cx="15.5" cy="15.5" r="11" fill="none" stroke="#1A237E" stroke-width="1.4"/>
+            <text x="15.5" y="20" font-family="Roboto, Arial, sans-serif" font-size="12" font-weight="700" fill="#1A237E" text-anchor="middle">cc</text>
+            <circle cx="43" cy="15.5" r="11" fill="none" stroke="#1A237E" stroke-width="1.4"/>
+            <text x="43" y="20" font-family="Roboto, Arial, sans-serif" font-size="10" font-weight="700" fill="#1A237E" text-anchor="middle">BY</text>
+            <circle cx="70.5" cy="15.5" r="11" fill="none" stroke="#1A237E" stroke-width="1.4"/>
+            <text x="70.5" y="20" font-family="Roboto, Arial, sans-serif" font-size="10" font-weight="700" fill="#1A237E" text-anchor="middle">SA</text>
+          </svg>
+        </a>
+        Esta obra está bajo una licencia
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)</a>.
+      </p>
+      <p class="microtexto">Se permite copiar, redistribuir, adaptar y transformar este material, incluso con fines comerciales, siempre que se otorgue el crédito correspondiente a la autora y que las obras derivadas se distribuyan bajo la misma licencia.</p>
+    </section>
+
+    <div class="navegacion-pasos">
+      <a class="btn btn-secundario" id="nav-anterior" href="produccion-final.html">⟵ Anterior</a>
+      <a class="btn btn-dorado" href="index.html">Volver al Inicio 🏢</a>
+    </div>
+  </main>
+</div>
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('El caso ha finalizado. Puedes volver al inicio para repasar cualquier misión cuando quieras.')">🔎</button>
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>medInicializarPagina('creditos');</script>
+</body>
+</html>

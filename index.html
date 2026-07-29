@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inicio | Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy?</title>
+<meta name="description" content="Material Educativo Digital: Detectives de Mitos. Cuartel General de la Agencia — página de inicio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo">
+     <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    </div>
+
+    <div class="med-header__textos">
+      <h1 class="med-header__titulo">Detectives de Mitos</h1>
+      <p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy? — Agencia de Investigación </p>
+    </div>
+
+    <div class="med-header__acciones">
+      <button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO_BIENVENIDA)">🔊 Escuchar audio</button>
+    </div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación">
+    <ol id="breadcrumbs-lista"></ol>
+  </nav>
+  <div class="progreso-caso">
+    <div class="progreso-caso__etiqueta">
+      <span id="progreso-texto">Expediente completado: 0 de 12 misiones (0%)</span>
+    </div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso">
+      <div class="progreso-caso__barra" id="progreso-barra"></div>
+    </div>
+  </div>
+</header>
+
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso">
+    <h2>🗂️ Expediente del caso</h2>
+    <ol id="expediente-nav-lista"></ol>
+  </nav>
+
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-1 — APERTURA</span>
+      <h1 id="titulo-mision">Bienvenido a la Agencia de Detectives de Mitos</h1>
+
+      <div class="objetivo-caja">
+        <strong>Objetivo de esta pantalla:</strong> presentarte tu nuevo rol como investigador/a, activar tus conocimientos previos sobre los héroes y heroínas, y motivarte a iniciar el caso.
+      </div>
+
+      <div class="detective-dialogo">
+        <div class="detective-dialogo__avatar" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#F5F1E3"/><path d="M14 42c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="27" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="31" x2="37" y2="38" stroke="#1A237E" stroke-width="3"/><path d="M18 19 L46 19 L40 11 L24 11 Z" fill="#1A237E"/></svg></div>
+        <p class="detective-dialogo__texto"><strong>Jefe/a de la Agencia:</strong> "¡Atención, recluta! Se te ha asignado un caso de máxima prioridad. Hemos notado que las huellas de los grandes héroes del pasado parecen estarse borrando, y algunos dicen que las heroínas nunca existieron. Tu misión es investigar si estas figuras siguen vivas entre nosotros hoy o si solo son cuentos del pasado. ¿Estás listo/a para abrir el expediente?"</p>
+      </div>
+
+      <p class="microtexto">En esta agencia trabajarás como un/a auténtico/a detective de <button class="termino-clave" onclick="medAbrirGlosario('heroe')">héroes y heroínas </button>: leerás mitos, compararás personajes de distintas épocas, usarás herramientas gramaticales para describirlos y, al final, crearás tu propio héroe o heroína para resolver un problema de la actualidad.</p>
+
+      <figure class="recurso-media">
+        <figcaption>
+        </figcaption>
+        <img src="img/Escritorio Detective.webp" alt="Escritorio de investigación con lupa, expedientes y una tablet, en tonos azul noche y arena." class="achicarImg">
+      </figure>
+
+      
+<div class="tarjeta tarjeta--expediente" id="tarjeta-detective-inicio">
+<p id="saludoDetective"></p>
+<div class="detective-acciones-inicio">
+  <button class="btn btn-dorado" id="btn-abrir-identificacion" type="button">🕵️ Identificarme / Cambiar detective</button>
+</div>
+</div>
+<script>
+(function(){
+  function actualizarSaludo(){
+    const saludo = document.getElementById('saludoDetective');
+    if(!saludo) return;
+    const nombre = medObtenerDetectiveActivo();
+    saludo.textContent = nombre
+      ? `Detective ${nombre}, misión aceptada: tu expediente personal está abierto y tu progreso se guarda de forma independiente.`
+      : 'Todavía no te has identificado. Abre tu expediente para que tu progreso y tus logros se guarden a tu nombre.';
+  }
+  document.addEventListener('DOMContentLoaded', actualizarSaludo);
+  document.addEventListener('medDetectiveCambiado', actualizarSaludo);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btn-abrir-identificacion');
+    if(btn) btn.addEventListener('click', () => medAbrirModalDetective(false));
+  });
+})();
+</script>
+
+<div class="navegacion-pasos">
+        <span></span>
+        <a class="btn btn-dorado" id="nav-siguiente" href="mision-reclutamiento.html">Iniciar la Misión de Reclutamiento ⟶</a>
+      </div>
+    </section>
+
+    <section class="tarjeta" aria-labelledby="titulo-mapa-caso">
+      <h2 id="titulo-mapa-caso">🗺️ El camino de la investigación</h2>
+      <p class="microtexto">Este caso se resuelve en 12 etapas, siguiendo una navegación lineal progresiva. Puedes ver tu ubicación en cualquier momento en las <em>migas de pan</em> de la parte superior y tu avance en la <em>barra de progreso</em>.</p>
+      <div class="mapa-ruta" id="mapa-ruta" role="list" aria-label="Etapas del caso"></div>
+    </section>
+  </main>
+</div>
+
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('Usa el menú lateral (o el botón Siguiente) para avanzar por el caso en orden. Cada pantalla tiene una sola misión: léela con calma antes de responder. Puedes volver a escuchar los audios cuando quieras con el botón 🔊.')">🔎</button>
+
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1">
+    <button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button>
+    <h3 id="modal-glosario-titulo"></h3>
+    <p id="modal-glosario-texto"></p>
+  </div>
+</div>
+
+<footer class="med-footer">
+  <p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+  <p>Créditos completos en la página <a href="creditos.html">Créditos del Caso</a>.</p>
+</footer>
+
+<script>
+const TEXTO_AUDIO_BIENVENIDA = "Bienvenido a la Agencia de Detectives de Mitos, recluta. Tenemos un caso abierto: muchos dicen que los héroes han desaparecido y otros aseguran que las heroínas nunca existieron. Tu misión es investigar las huellas de estas figuras desde la antigüedad hasta hoy. Prepara tu lupa, la investigación comienza ahora.";
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>medInicializarPagina('inicio');</script>
+</body>
+</html>

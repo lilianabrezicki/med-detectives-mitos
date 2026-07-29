@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería de Sospechosos | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    <div class="med-header__textos"><h1 class="med-header__titulo">Detectives de Mitos</h1><p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy?</p></div>
+    <div class="med-header__acciones"><button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO)">🔊 Escuchar audio</button></div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol id="breadcrumbs-lista"></ol></nav>
+  <div class="progreso-caso"><div class="progreso-caso__etiqueta"><span id="progreso-texto"></span></div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso"><div class="progreso-caso__barra" id="progreso-barra"></div></div></div>
+</header>
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso"><h2>🗂️ Expediente del caso</h2><ol id="expediente-nav-lista"></ol></nav>
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-5 — MISIÓN 1 (OA1)</span>
+      <h1 id="titulo-mision">Pistas en la Galería de Sospechosos</h1>
+      <div class="objetivo-caja"><strong>Objetivo de esta pantalla:</strong> descubrir, por descubrimiento inductivo, qué valores y rasgos se repiten entre héroes y heroínas de distintas épocas y culturas. </div>
+
+      <div class="detective-dialogo">
+        <div class="detective-dialogo__avatar" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#F5F1E3"/><path d="M14 42c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="27" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="31" x2="37" y2="38" stroke="#1A237E" stroke-width="3"/><path d="M18 19 L46 19 L40 11 L24 11 Z" fill="#1A237E"/></svg></div>
+        <p class="detective-dialogo__texto"><strong>Detective jefe:</strong> "Observa con atención estas figuras de distintas épocas. Desde la sabiduría de Atenea hasta la valentía de los líderes actuales. No solo busques capas o espadas: busca valores. Haz clic en cada imagen para recolectar las pistas."</p>
+      </div>
+
+      <div class="actividad" aria-labelledby="act5-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">🖼️</span><h2 class="actividad__titulo" id="act5-titulo">Actividad 5 — Investigación en la Galería</h2></div>
+        <div class="galeria-grid" id="galeria-grid">
+
+          <button class="galeria-item" onclick="medAbrirFichaGaleria('Atenea (mito griego)','Rasgo destacado: sabiduría estratégica. Atenea representa el pensamiento antes que la fuerza bruta; en muchas culturas antiguas, el héroe más admirado no era el más fuerte, sino el más sabio.')">
+            <!-- <span class="galeria-item__img" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="14" fill="#F5F1E3"/><rect x="20" y="38" width="24" height="20" rx="4" fill="#C5A059"/></svg></span> -->
+            <img src="img/Atenea.webp" alt="">
+            <span class="galeria-item__pie"><span class="evidencia-sello">Evidencia clásica</span><strong>Atenea</strong><span>Mitología griega</span></span>
+          </button>
+
+          <button class="galeria-item" onclick="medAbrirFichaGaleria('Hércules (mito griego)','Rasgo destacado: fuerza y perseverancia frente a las pruebas. Hércules debe cumplir doce trabajos casi imposibles; simboliza el esfuerzo sostenido más que la victoria fácil.')">
+
+          <!-- <button class="galeria-item" onclick="medAbrirFichaGaleria('Hércules (mito griego)','Rasgo destacado: fuerza y perseverancia frente a las pruebas. Hércules debe cumplir doce trabajos casi imposibles; simboliza el esfuerzo sostenido más que la victoria fácil.')"> -->
+            <!--<span class="galeria-item__img" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="14" fill="#F5F1E3"/><rect x="20" y="38" width="24" height="20" rx="4" fill="#C5A059"/></svg></span> -->
+            <img src="img/Hercules.webp" alt="">
+            <span class="galeria-item__pie"><span class="evidencia-sello">Evidencia clásica</span><strong>Hércules</strong><span>Mitología griega</span></span>
+          </button>
+
+          <button class="galeria-item" onclick="medAbrirFichaGaleria('Mulan (leyenda china)','Rasgo destacado: coraje y sentido del deber familiar. Mulan desafía las normas de su época para proteger a su familia y a su comunidad.')">
+            <!--<span class="galeria-item__img" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="14" fill="#F5F1E3"/><rect x="20" y="38" width="24" height="20" rx="4" fill="#C5A059"/></svg></span> -->
+            <img src="img/Mulan.webp" alt="">
+            <span class="galeria-item__pie"><span class="evidencia-sello">Evidencia clásica</span><strong>Mulan</strong><span>Leyenda china</span></span>
+          </button>
+
+          <button class="galeria-item" onclick="medAbrirFichaGaleria('Persona socorrista actual','Rasgo destacado: solidaridad y acción inmediata frente a una emergencia real, sin buscar reconocimiento.')">
+            <!--<span class="galeria-item__img" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="14" y="14" width="36" height="36" rx="8" fill="#F5F1E3"/></svg></span> -->
+            <img src="img/Bombero.webp" alt="">
+            <span class="galeria-item__pie"><span class="evidencia-sello">Evidencia moderna</span><strong>Socorrista voluntario/a</strong><span>Actualidad</span></span>
+          </button>
+
+          <button class="galeria-item" onclick="medAbrirFichaGaleria('Activista ambiental joven','Rasgo destacado: convicción y constancia para defender una causa colectiva, incluso sin poderes ni fuerza física.')">
+            <!--<span class="galeria-item__img" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="14" y="14" width="36" height="36" rx="8" fill="#F5F1E3"/></svg></span>  -->
+            <img src="img/Activista.webp" alt="">
+            <span class="galeria-item__pie"><span class="evidencia-sello">Evidencia moderna</span><strong>Activista ambiental</strong><span>Actualidad</span></span>
+          </button>
+
+          <button class="galeria-item" onclick="medAbrirFichaGaleria('Superhéroe/heroína de cómic','Rasgo destacado: doble identidad y responsabilidad frente al propio poder (\'un gran poder conlleva una gran responsabilidad\').')">
+
+          <!-- <button class="galeria-item" onclick="medAbrirFichaGaleria('Superhéroe/heroína de cómic','Rasgo destacado: doble identidad y responsabilidad frente al propio poder (\'un gran poder conlleva una gran responsabilidad\'').')"> -->
+            <!--<span class="galeria-item__img" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="14" y="14" width="36" height="36" rx="8" fill="#F5F1E3"/></svg></span> -->
+            <img src="img/comic.webp" alt="">
+            <span class="galeria-item__pie"><span class="evidencia-sello">Evidencia moderna</span><strong>Superhéroe de cómic</strong><span>Cultura popular</span></span>
+          </button>
+        </div>
+        <p class="microtexto" id="contador-galeria">Pistas recolectadas: 0 de 6.</p>
+      </div>
+
+      <!-- <figure class="recurso-media">
+        <span class="recurso-media__icono" aria-hidden="true">🖼️</span>
+        <figcaption><strong>Imágenes sugeridas (a reemplazar por el/la docente):</strong> seis retratos estilo "ficha policial" (frente y perfil) de figuras clásicas (Atenea, Hércules, Mulan) y modernas (socorrista, activista, superhéroe de cómic), todas con el mismo encuadre y fondo Arena.
+        <br><em>Texto alternativo sugerido por imagen:</em> "Retrato tipo ficha policial de [nombre], fondo color arena, con un sello de evidencia clásica/moderna en la esquina."</figcaption>
+      </figure>
+
+      <div class="recurso-media">
+        <span class="recurso-media__icono" aria-hidden="true">🎧</span>
+        <div><strong>Audio sugerido — "Pistas Transculturales" (por cada imagen)</strong>
+        <p class="recurso-media__guion">Guion general: "Observa con atención estas figuras de distintas épocas. Desde la sabiduría de Atenea hasta la valentía de los líderes actuales. No solo busques capas o espadas; busca valores. ¿Qué rasgos se repiten a pesar de los siglos?"</p>
+        <p class="recurso-media__guion">Además, cada imagen puede tener un audio corto (10-15 seg) leyendo el texto de su ventana emergente.</p></div>
+      </div> -->
+
+      <div class="navegacion-pasos">
+        <a class="btn btn-secundario" id="nav-anterior" href="mapa-conceptual.html">⟵ Anterior</a>
+        <a class="btn btn-dorado" id="nav-siguiente" href="viaje-del-heroe.html">Siguiente ⟶</a>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('Haz clic en cada retrato para leer su pista. Intenta encontrar al menos un valor que se repita entre una figura clásica y una moderna.')">🔎</button>
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script>
+const TEXTO_AUDIO = "Observa con atención estas figuras de distintas épocas. No solo busques capas o espadas, busca valores. Haz clic en cada imagen para recolectar las pistas que definen la esencia heroica.";
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>
+medInicializarPagina('galeria-heroes');
+document.addEventListener('DOMContentLoaded', () => {
+  let vistas = new Set();
+  const nombres = ['Atenea','Hércules','Mulan','Socorrista voluntario/a','Activista ambiental','Superhéroe de cómic'];
+  document.querySelectorAll('#galeria-grid .galeria-item').forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      vistas.add(i);
+      document.getElementById('contador-galeria').textContent = `Pistas recolectadas: ${vistas.size} de 6.`;
+      const exploradas = [...vistas].sort((a,b) => a-b).map(idx => nombres[idx]);
+      medGuardarRespuesta('galeria-heroes', 'galeria-exploradas', 'Sospechosos explorados en la galería',
+        `${vistas.size} de 6 — ${exploradas.join(', ')}`);
+      if(vistas.size === 6) medMarcarLogro('galeria-completa');
+    });
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Las Huellas del Camino | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    <div class="med-header__textos"><h1 class="med-header__titulo">Detectives de Mitos</h1><p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy?</p></div>
+    <div class="med-header__acciones"><button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO)">🔊 Escuchar audio</button></div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol id="breadcrumbs-lista"></ol></nav>
+  <div class="progreso-caso"><div class="progreso-caso__etiqueta"><span id="progreso-texto"></span></div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso"><div class="progreso-caso__barra" id="progreso-barra"></div></div></div>
+</header>
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso"><h2>🗂️ Expediente del caso</h2><ol id="expediente-nav-lista"></ol></nav>
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-6 — MISIÓN 2 (OA3)</span>
+      <h1 id="titulo-mision">El Mapa del Monomito</h1>
+      <div class="objetivo-caja"><strong>Objetivo de esta pantalla:</strong> interpretar la estructura del <button class="termino-clave" onclick="medAbrirGlosario('monomito')">Monomito</button> de Campbell y ordenar sus etapas. </div>
+      <figure class="recurso-media">
+          <img src="img/nota.webp" alt="Mensaje previo al video." class="achicarImg">
+      </figure>
+
+      <h2>📽️ Video: Las etapas de Campbell</h2>
+      <div class="video-embed" style="max-width: 900px; margin: 0 auto;">
+          <iframe
+            id="h5p-monomito"
+            src="h5p/6a611ba57b3d468e85cceac2.html"
+            width=auto
+            height=auto
+            frameborder="0"
+            allowfullscreen
+            title="Video interactivo: etapas del Monomito"
+            style="display:block; width:100%; border:0;">
+          </iframe>
+      </div>
+
+    <script>
+    (function () {
+      const iframe = document.getElementById('h5p-monomito');
+
+      function ajustarAltura() {
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          const alto = doc.body.scrollHeight;
+          if (alto > 0) iframe.style.height = alto + 'px';
+        } catch (e) {
+          console.warn('No se pudo ajustar el alto del iframe H5P:', e);
+        }
+      }
+
+      iframe.addEventListener('load', () => {
+        ajustarAltura();
+        // Reintenta durante 10 segundos: el contenido de H5P a veces
+        // termina de armarse (preguntas, etc.) unos instantes después de cargar.
+        let intentos = 0;
+        const intervalo = setInterval(() => {
+          ajustarAltura();
+          intentos++;
+          if (intentos > 20) clearInterval(intervalo);
+        }, 500);
+      });
+    })();
+</script>
+
+
+      <div class="detective-dialogo">
+        <div class="detective-dialogo__avatar" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#F5F1E3"/><path d="M14 42c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="27" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="31" x2="37" y2="38" stroke="#1A237E" stroke-width="3"/><path d="M18 19 L46 19 L40 11 L24 11 Z" fill="#1A237E"/></svg></div>
+        <p class="detective-dialogo__texto"><strong>Detective jefe:</strong> "Un buen investigador reconoce el patrón detrás de cada historia. Ahora ordena las cinco etapas del camino del héroe."</p>
+      </div>
+
+      <div class="actividad" aria-labelledby="act6-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">🧩</span><h2 class="actividad__titulo" id="act6-titulo">Actividad 6 — Ordena el Camino del Héroe</h2></div>
+        <p class="microtexto">Arrastra las tarjetas para ordenarlas de la primera a la última etapa del Monomito. Si usas teclado, cada tarjeta tiene botones ▲ / ▼ para moverla.</p>
+        <div class="dnd-lista" id="lista-monomito" aria-label="Lista ordenable de etapas del Monomito">
+          <div class="dnd-ficha" data-id="recompensa" tabindex="0">🏆 La Recompensa <button class="mover-arriba" aria-label="Mover arriba">▲</button><button class="mover-abajo" aria-label="Mover abajo">▼</button></div>
+          <div class="dnd-ficha" data-id="retorno" tabindex="0">🏠 El Retorno <button class="mover-arriba" aria-label="Mover arriba">▲</button><button class="mover-abajo" aria-label="Mover abajo">▼</button></div>
+          <div class="dnd-ficha" data-id="llamada" tabindex="0">📯 La Llamada <button class="mover-arriba" aria-label="Mover arriba">▲</button><button class="mover-abajo" aria-label="Mover abajo">▼</button></div>
+          <div class="dnd-ficha" data-id="pruebas" tabindex="0">⚔️ Las Pruebas <button class="mover-arriba" aria-label="Mover arriba">▲</button><button class="mover-abajo" aria-label="Mover abajo">▼</button></div>
+          <div class="dnd-ficha" data-id="ayuda" tabindex="0">🤝 La Ayuda <button class="mover-arriba" aria-label="Mover arriba">▲</button><button class="mover-abajo" aria-label="Mover abajo">▼</button></div>
+        </div>
+        <button class="btn btn-primario" id="btn-verificar-monomito">Verificar orden</button>
+        <div class="feedback" id="feedback-monomito" aria-live="polite"></div>
+      </div>
+
+      <figure class="recurso-media">
+        <!-- <span class="recurso-media__icono" aria-hidden="true">🖼️</span> -->
+        <!-- <figcaption><strong>Imagen sugerida:</strong> camino sinuoso o mapa del tesoro con cinco banderines numerados, cada uno con un ícono (cuerno, mano, espada, cofre, casa). -->
+          <img src="img/Viaje.webp" alt="Mapa ilustrado con un camino y cinco banderines que representan las etapas del Monomito." class="achicarImg">
+          <!-- <br><em>Texto alternativo:</em> "Mapa ilustrado con un camino y cinco banderines que representan las etapas del Monomito."</figcaption> -->
+      </figure>
+
+      <div class="navegacion-pasos">
+        <a class="btn btn-secundario" id="nav-anterior" href="galeria-heroes.html">⟵ Anterior</a>
+        <a class="btn btn-dorado" id="nav-siguiente" href="caso-hercules.html">Siguiente ⟶</a>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('Recuerda: primero el héroe recibe un llamado a la aventura, luego recibe ayuda, enfrenta pruebas, obtiene una recompensa y finalmente regresa transformado.')">🔎</button>
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script>
+const TEXTO_AUDIO = "Un buen investigador reconoce el patrón detrás de cada historia. Observa el video y luego ordena las cinco etapas del camino del héroe: la llamada, la ayuda, las pruebas, la recompensa y el retorno.";
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>
+medInicializarPagina('viaje-del-heroe');
+document.addEventListener('DOMContentLoaded', () => {
+  medInicializarOrdenamiento('lista-monomito');
+  const mapaError = {
+    llamada:   'Esa pista no encaja ahí. Recuerda: antes de enfrentar las pruebas, el héroe siempre recibe primero una "llamada" a la aventura. Revisa el minuto 0:20 del video para reubicar tu pista.',
+    ayuda:     'Esa pista no encaja ahí. Después de la llamada, el héroe recibe una ayuda o guía inicial, antes de las pruebas más difíciles. Revisa el minuto 0:55 del video.',
+    pruebas:   'Esa pista no encaja ahí. Las pruebas ocurren después de recibir ayuda y antes de obtener la recompensa. Revisa el minuto 1:30 del video.',
+    recompensa:'Esa pista no encaja ahí. La recompensa se obtiene después de superar las pruebas, y antes del retorno a casa. Revisa el minuto 2:10 del video.',
+    retorno:   'Esa pista no encaja ahí. El retorno es siempre la última etapa: el héroe vuelve transformado por lo vivido. Revisa el minuto 2:40 del video.'
+  };
+  document.getElementById('btn-verificar-monomito').addEventListener('click', () => {
+    medVerificarOrdenamiento('lista-monomito','feedback-monomito',
+      ['llamada','ayuda','pruebas','recompensa','retorno'], mapaError, 'monomito-ordenado');
+  });
+});
+</script>
+</body>
+</html>

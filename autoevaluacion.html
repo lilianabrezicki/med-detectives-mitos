@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autoevaluación | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    <div class="med-header__textos"><h1 class="med-header__titulo">Detectives de Mitos</h1><p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy?</p></div>
+    <div class="med-header__acciones"><button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO)">🔊 Escuchar audio</button></div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol id="breadcrumbs-lista"></ol></nav>
+  <div class="progreso-caso"><div class="progreso-caso__etiqueta"><span id="progreso-texto"></span></div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso"><div class="progreso-caso__barra" id="progreso-barra"></div></div></div>
+</header>
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso"><h2>🗂️ Expediente del caso</h2><ol id="expediente-nav-lista"></ol></nav>
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-10 — CONTROL DE CALIDAD (OA5)</span>
+      <h1 id="titulo-mision">Autoevaluación: Rúbrica Interactiva</h1>
+      <div class="objetivo-caja"><strong>Objetivo de esta pantalla:</strong> evaluar el propio informe final antes de entregarlo, revisando adecuación, cohesión y ortografía. </div>
+
+      <div class="actividad" aria-labelledby="act11-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">📋</span><h2 class="actividad__titulo" id="act11-titulo">Actividad 11 — Rúbrica de Autoevaluación</h2></div>
+        <form id="form-rubrica">
+          <table class="rubrica-tabla">
+            <thead>
+              <tr><th scope="col">Criterio</th><th scope="col">Excelente (Logrado)</th><th scope="col">En Proceso (Bueno)</th><th scope="col">Por Mejorar</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Adecuación del Perfil</th>
+                <td><label><input type="radio" name="adecuacion" value="3"> El personaje resuelve un problema actual y está descrito con adjetivos y verbos precisos.</label></td>
+                <td><label><input type="radio" name="adecuacion" value="2"> El personaje es claro, pero faltan recursos descriptivos para caracterizarlo mejor.</label></td>
+                <td><label><input type="radio" name="adecuacion" value="1"> El personaje no se ajusta a un problema actual o carece de descripción.</label></td>
+              </tr>
+              <tr>
+                <th scope="row">Cohesión y Estructura</th>
+                <td><label><input type="radio" name="cohesion" value="3"> Las ideas están conectadas lógicamente y siguen la estructura del relato épico.</label></td>
+                <td><label><input type="radio" name="cohesion" value="2"> Hay una secuencia lógica, aunque algunos saltos en la narración confunden el relato.</label></td>
+                <td><label><input type="radio" name="cohesion" value="1"> El texto presenta ideas sueltas sin una conexión clara entre ellas.</label></td>
+              </tr>
+              <tr>
+                <th scope="row">Ortografía y Gramática</th>
+                <td><label><input type="radio" name="ortografia" value="3"> El texto no presenta errores de ortografía y utiliza correctamente las categorías gramaticales.</label></td>
+                <td><label><input type="radio" name="ortografia" value="2"> Presenta errores ortográficos menores que no afectan la comprensión del informe.</label></td>
+                <td><label><input type="radio" name="ortografia" value="1"> Los errores ortográficos o gramaticales dificultan la lectura del perfil.</label></td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-primario">Cerrar control de calidad</button>
+        </form>
+        <div id="resultado-rubrica" class="feedback mostrar" style="background:var(--arena); border:1px solid var(--arena-oscuro);" aria-live="polite"></div>
+      </div>
+
+      <div class="actividad" aria-labelledby="act-cotejo-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">✅</span><h2 class="actividad__titulo" id="act-cotejo-titulo">Lista de Cotejo — Últimos detalles</h2></div>
+        <ul class="lista-cotejo" id="lista-cotejo">
+          <li><input type="checkbox" id="c1"><label for="c1">Mi héroe/heroína tiene un nombre y resuelve un problema actual claro.</label></li>
+          <li><input type="checkbox" id="c2"><label for="c2">Usé al menos tres adjetivos para describirlo/a.</label></li>
+          <li><input type="checkbox" id="c3"><label for="c3">Incluí un llamado, una prueba y una transformación (Viaje del Héroe).</label></li>
+          <li><input type="checkbox" id="c4"><label for="c4">Revisé la ortografía y la tildación de mi texto.</label></li>
+          <li><input type="checkbox" id="c5"><label for="c5">Leí mi informe en voz alta para comprobar que las ideas se conectan (cohesión).</label></li>
+        </ul>
+        <p id="resultado-cotejo" aria-live="polite"></p>
+      </div>
+
+      <figure class="recurso-media">
+        <img src="img/Sello.webp" alt="Sello de goma rojo con la inscripción Control de Calidad." class="achicarImg">
+        <!-- <span class="recurso-media__icono" aria-hidden="true">🖼️</span>
+        <figcaption><strong>Imagen sugerida:</strong> sello de goma rojo "CONTROL DE CALIDAD" listo para estampar sobre el expediente.
+        <br><em>Texto alternativo:</em> "Sello de goma rojo con la inscripción Control de Calidad."</figcaption> -->
+      </figure>
+
+      <div class="navegacion-pasos">
+        <a class="btn btn-secundario" id="nav-anterior" href="informe-final.html">⟵ Anterior</a>
+        <a class="btn btn-dorado" id="nav-siguiente" href="produccion-final.html">Siguiente ⟶</a>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('Sé honesto/a al autoevaluarte: marcar Por Mejorar no es un error, es una oportunidad de revisar tu texto antes de entregarlo.')">🔎</button>
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script>
+const TEXTO_AUDIO = "Antes de entregar tu informe, revisa cada criterio de la rúbrica con honestidad. Esta autoevaluación te ayudará a mejorar tu texto antes del cierre del caso.";
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>
+medInicializarPagina('autoevaluacion');
+document.addEventListener('DOMContentLoaded', () => {
+  medConfigurarRubrica('form-rubrica','resultado-rubrica');
+  medConfigurarListaCotejo('lista-cotejo','resultado-cotejo');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tablero de Investigación | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    <div class="med-header__textos"><h1 class="med-header__titulo">Detectives de Mitos</h1><p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy?</p></div>
+    <div class="med-header__acciones"><button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO)">🔊 Escuchar audio</button></div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol id="breadcrumbs-lista"></ol></nav>
+  <div class="progreso-caso"><div class="progreso-caso__etiqueta"><span id="progreso-texto"></span></div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso"><div class="progreso-caso__barra" id="progreso-barra"></div></div></div>
+</header>
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso"><h2>🗂️ Expediente del caso</h2><ol id="expediente-nav-lista"></ol></nav>
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-4 — TABLERO DE EVIDENCIAS</span>
+      <h1 id="titulo-mision">Mapa Conceptual: Detectives de Mitos</h1>
+      <div class="objetivo-caja"><strong>Objetivo de esta pantalla:</strong> visualizar cómo se conectan los grandes temas del caso antes de investigarlos en profundidad. </div>
+      <p class="microtexto">Este es nuestro tablero de evidencias. Haz clic en cada pista para leer de qué trata y saltar directamente a su misión correspondiente.</p>
+
+      <div class="mapa-conceptual-caja mapa-imagen-clicable">
+        <img src="img/Misiones.webp" alt="Tablero de corcho con cinco tarjetas ancladas: Misión 1 Evolución del héroe, Misión 2 Herramientas gramaticales, Misión 3 El Viaje del Héroe, Misión 4 Comprensión multimodal y Misión 5 Producción creativa, conectadas por hilos." class="mapa-imagen">
+
+        <a href="galeria-heroes.html" class="zona-clic" style="left:16.4%; top:12%; width:20.7%; height:37.4%;">
+          <span class="solo-lectores">Misión 1: Evolución del héroe. Ir a Galería de Sospechosos.</span>
+        </a>
+        <a href="viaje-del-heroe.html" class="zona-clic" style="left:38.9%; top:12%; width:20.7%; height:37.4%;">
+          <span class="solo-lectores">Misión 2: Herramientas gramaticales. Ir a Laboratorio Gramatical.</span>
+        </a>
+        <a href="detective-gramatical.html" class="zona-clic" style="left:61.7%; top:12%; width:21%; height:37.4%;">
+          <span class="solo-lectores">Misión 3: El Viaje del Héroe. Ir a Las Huellas del Camino.</span>
+        </a>
+        <a href="caso-hercules.html" class="zona-clic" style="left:23.5%; top:56.1%; width:23.5%; height:34.8%;">
+          <span class="solo-lectores">Misión 4: Comprensión multimodal. Ir a El Caso Hércules.</span>
+        </a>
+        <a href="informe-final.html" class="zona-clic" style="left:54.6%; top:56.1%; width:23.2%; height:34.8%;">
+          <span class="solo-lectores">Misión 5: Producción creativa. Ir a Informe del Caso.</span>
+        </a>
+        <button type="button" class="zona-clic zona-clic--glosario" style="left:84%; top:13%; width:14.5%; height:31%;" onclick="medAbrirGlosario('heroe')">
+          <span class="solo-lectores">Nota del detective: abrir definición de héroe / heroína.</span>
+        </button>
+      </div>
+
+      <p class="microtexto">Cada tarjeta del tablero es un enlace interno a su misión: al hacer clic o pulsar Enter viajarás directamente a esa parte del expediente. La nota del detective (arriba a la derecha) abre una ventana emergente con la definición de "héroe/heroína".</p>
+
+      <!-- <figure class="recurso-media"> -->
+        <!-- <span class="recurso-media__icono" aria-hidden="true">🖼️</span>
+        <figcaption><strong>Imagen de referencia sugerida:</strong> tablero de investigación policial con fotos de "sospechosos" (héroes), hilos rojos conectando pistas y sellos de evidencia, en la paleta Azul Noche / Arena / Dorado.
+        <br><em>Texto alternativo:</em> "Tablero de corcho con fotografías conectadas por hilos rojos, simulando una investigación policial sobre héroes."</figcaption>
+      </figure>
+
+      <div class="recurso-media">
+        <span class="recurso-media__icono" aria-hidden="true">🎧</span>
+        <div><strong>Audio sugerido — accesibilidad de navegación</strong>
+        <p class="recurso-media__guion">Guion breve: "Este es nuestro tablero de evidencias. Cada pista conectada al centro te lleva a una misión distinta del caso. Haz clic en la que quieras investigar primero."</p></div>
+      </div> -->
+
+      <div class="navegacion-pasos">
+        <a class="btn btn-secundario" id="nav-anterior" href="objetivos.html">⟵ Anterior</a>
+        <a class="btn btn-dorado" id="nav-siguiente" href="galeria-heroes.html">Siguiente ⟶</a>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('Usa Tab para moverte entre los nodos del mapa con el teclado, y Enter para activarlos.')">🔎</button>
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script>
+const TEXTO_AUDIO = "Este es nuestro tablero de evidencias. Cada pista conectada al centro te lleva a una misión distinta del caso. Haz clic en la que quieras investigar primero.";
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>medInicializarPagina('mapa-conceptual');</script>
+</body>
+</html>

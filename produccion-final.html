@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Producción Final | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+    <div class="med-header__textos"><h1 class="med-header__titulo">Detectives de Mitos</h1><p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy?</p></div>
+    <div class="med-header__acciones"><button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO)">🔊 Escuchar audio</button></div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol id="breadcrumbs-lista"></ol></nav>
+  <div class="progreso-caso"><div class="progreso-caso__etiqueta"><span id="progreso-texto"></span></div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso"><div class="progreso-caso__barra" id="progreso-barra"></div></div></div>
+</header>
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso"><h2>🗂️ Expediente del caso</h2><ol id="expediente-nav-lista"></ol></nav>
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-11 — ENTREGA</span>
+      <h1 id="titulo-mision">Producción Final: Entrega del Expediente</h1>
+      <div class="objetivo-caja"><strong>Objetivo de esta pantalla:</strong> formalizar la entrega del informe final ya revisado con la rúbrica, cerrando el caso. </div>
+
+      <div class="detective-dialogo">
+        <div class="detective-dialogo__avatar" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#F5F1E3"/><path d="M14 42c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="27" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="31" x2="37" y2="38" stroke="#1A237E" stroke-width="3"/><path d="M18 19 L46 19 L40 11 L24 11 Z" fill="#1A237E"/></svg></div>
+        <p class="detective-dialogo__texto"><strong>Jefe/a de Agencia:</strong> "Detective, ha llegado el momento de archivar tu expediente. Copia tu informe final ya revisado, confirma que pasaste el control de calidad y entrega tu caso."</p>
+      </div>
+
+      <div class="actividad" aria-labelledby="act-entrega-titulo">
+        <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">📤</span><h2 class="actividad__titulo" id="act-entrega-titulo">Formulario de Entrega Final</h2></div>
+        <div class="campo-formulario">
+          <label for="texto-final">He aquí tu Informe Final revisado (héroe/heroína, descripción y Viaje del Héroe).  Puedes realizar ajustes si lo crees necesario</label>
+          <textarea id="texto-final" style="min-height:160px;"></textarea>
+        </div>
+        <div class="campo-formulario">
+          <label for="confirmacion"><input type="checkbox" id="confirmacion" style="width:auto; margin-right:8px;">Confirmo que ya completé la Autoevaluación con la rúbrica interactiva.</label>
+        </div>
+        <button class="btn btn-primario" id="btn-entregar">Entregar expediente</button>
+        <div class="feedback" id="feedback-entrega" aria-live="polite"></div>
+      </div>
+
+      <p class="microtexto"><strong>Nota técnica para el/la docente:</strong> al presionar "Entregar expediente", además de validarse este formulario se descarga automáticamente un archivo <code>.txt</code> con el nombre del detective y el registro de todas sus respuestas en las 12 pantallas del caso, listo para que el estudiante lo adjunte donde usted indique (Classroom, Moodle, correo, etc.). Este "Formulario final" también puede sustituirse por un enlace externo a Google Forms u otra plataforma institucional. La retroalimentación de esta última instancia es <em>diferida</em>.</p>
+
+      <div class="navegacion-pasos">
+        <a class="btn btn-secundario" id="nav-anterior" href="autoevaluacion.html">⟵ Anterior</a>
+        <a class="btn btn-dorado" id="nav-siguiente" href="creditos.html">Siguiente ⟶</a>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('Antes de entregar, asegúrate de haber marcado los cinco puntos de la lista de cotejo en la pantalla anterior.')">🔎</button>
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script>
+const TEXTO_AUDIO = "Detective, ha llegado el momento de archivar tu expediente. Copia tu informe final ya revisado y entrega tu caso.";
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>
+medInicializarPagina('produccion-final');
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Si el detective todavía no completó este cuadro, le proponemos un borrador
+     armado con lo que ya escribió en el Informe Final (Actividad 12), para que
+     solo tenga que revisarlo en vez de volver a copiarlo a mano. */
+  const campoFinal = document.getElementById('texto-final');
+  if(campoFinal && !campoFinal.value.trim()){
+    const datos = medObtenerProgreso();
+    const informe = (datos.respuestas && datos.respuestas['informe-final']) || {};
+    const partes = [];
+    if(informe['nombre-heroe'] && informe['nombre-heroe'].valor) partes.push('Nombre: ' + informe['nombre-heroe'].valor);
+    if(informe['problema'] && informe['problema'].valor) partes.push('Problema que resuelve: ' + informe['problema'].valor);
+    if(informe['descripcion-heroe'] && informe['descripcion-heroe'].valor) partes.push('Descripción: ' + informe['descripcion-heroe'].valor);
+    if(informe['viaje-heroe'] && informe['viaje-heroe'].valor) partes.push('Viaje del héroe: ' + informe['viaje-heroe'].valor);
+    if(partes.length){
+      campoFinal.value = partes.join('\n\n');
+      medGuardarRespuesta('produccion-final', 'texto-final', medEtiquetaParaCampo(campoFinal), campoFinal.value);
+    }
+  }
+
+  document.getElementById('btn-entregar').addEventListener('click', () => {
+    const campoFinalEl = document.getElementById('texto-final');
+    const texto = campoFinalEl.value.trim();
+    const confirmado = document.getElementById('confirmacion').checked;
+    if(texto.length < 40 || !confirmado){
+      medMostrarFeedback('feedback-entrega', false, '',
+        'Todavía falta algo para cerrar el caso: pega tu informe completo y confirma que pasaste por el control de calidad de la rúbrica.');
+      return;
+    }
+
+    /* Guardamos explícitamente el valor actual del cuadro (por si el detective lo
+       editó después de la precarga) antes de generar el expediente, para que el
+       .txt refleje siempre la última versión escrita, no una copia desactualizada. */
+    medGuardarRespuesta('produccion-final', 'texto-final', medEtiquetaParaCampo(campoFinalEl), campoFinalEl.value);
+
+    /* Descargamos el expediente completo (.txt) con TODAS las respuestas de las 12 pantallas */
+    const archivo = medDescargarInformeTexto();
+
+    const el = document.getElementById('feedback-entrega');
+    el.classList.add('mostrar','correcto');
+    el.innerHTML = `<span class="feedback__icono">🎖️</span><span><span class="sello-resultado">CASO CERRADO</span><br>
+      Tu expediente fue archivado con éxito. Además, se descargó el archivo <strong>${archivo}</strong> a tu carpeta de Descargas,
+      con el registro completo de todo lo que trabajaste en el caso. Adjuntalo a la entrega que te indique tu docente
+      (por ejemplo, en Google Classroom) o envíaselo por correo. ¡Buen trabajo, detective!</span>`;
+    medMarcarLogro('entrega-final');
+    document.getElementById('btn-entregar').disabled = true;
+    document.getElementById('confirmacion').disabled = true;
+    document.getElementById('texto-final').setAttribute('aria-readonly','true');
+  });
+});
+</script>
+</body>
+</html>

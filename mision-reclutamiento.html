@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Misión de Reclutamiento | Detectives de Mitos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+
+<header class="med-header">
+  <div class="med-header__inner">
+    <div class="med-header__logo">
+      <div class="med-header__logo" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#C5A059"/><path d="M14 40c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="26" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="30" x2="36" y2="36" stroke="#1A237E" stroke-width="3"/><path d="M18 18 L46 18 L40 10 L24 10 Z" fill="#1A237E"/></svg></div>
+      <!-- <img src="img/Detective.png" alt="Logo de Detectives de Mitos: detective con lupa junto a un casco espartano, un pergamino y Pegaso." class="med-header__logo-img"> -->
+    </div>
+    <div class="med-header__textos">
+      <h1 class="med-header__titulo">Detectives de Mitos</h1>
+      <p class="med-header__subtitulo">¿Dónde están los héroes y heroínas hoy? </p>
+    </div>
+    <div class="med-header__acciones">
+      <button class="btn-audio" aria-pressed="false" onclick="medAlternarAudio(this, TEXTO_AUDIO_BIENVENIDA)">🔊 Escuchar audio</button>
+    </div>
+  </div>
+  <nav class="breadcrumbs" aria-label="Ruta de navegación">
+    <ol id="breadcrumbs-lista"></ol>
+  </nav>
+  <div class="progreso-caso">
+    <div class="progreso-caso__etiqueta">
+      <span id="progreso-texto">Expediente completado: 0 de 12 misiones (0%)</span>
+    </div>
+    <div class="progreso-caso__pista" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progreso del caso">
+      <div class="progreso-caso__barra" id="progreso-barra"></div>
+    </div>
+  </div>
+</header>
+
+<div class="med-layout">
+  <nav class="expediente-nav" aria-label="Menú de misiones del caso">
+    <h2>🗂️ Expediente del caso</h2>
+    <ol id="expediente-nav-lista"></ol>
+  </nav>
+
+  <main class="contenido-principal" id="contenido">
+    <section class="tarjeta tarjeta--expediente" aria-labelledby="titulo-mision">
+      <span class="etiqueta-mision">CASO N.º 001-2 — RECLUTAMIENTO</span>
+      <h1 id="titulo-mision">Misión de Reclutamiento</h1>
+      <div class="objetivo-caja">
+        <strong>Objetivo de esta pantalla:</strong> activar tus saberes previos sobre los héroes y heroínas actuales, y comenzar tu "perfil de detective" reflexionando sobre qué cualidades los definen. 
+      </div>
+
+      <div class="detective-dialogo">
+        <div class="detective-dialogo__avatar" aria-hidden="true"><svg viewBox="0 0 64 64" class="avatar-icono"><circle cx="32" cy="32" r="30" fill="#F5F1E3"/><path d="M14 42c2-10 8-16 18-16s16 6 18 16" stroke="#1A237E" stroke-width="3" fill="none"/><circle cx="26" cy="27" r="6" fill="none" stroke="#1A237E" stroke-width="3"/><line x1="30" y1="31" x2="37" y2="38" stroke="#1A237E" stroke-width="3"/><path d="M18 19 L46 19 L40 11 L24 11 Z" fill="#1A237E"/></svg></div>
+        <p class="detective-dialogo__texto"><strong>Jefe/a de Agencia:</strong> "Antes de salir a investigar el pasado, necesitamos conocer tu intuición de detective. Completa tu expediente inicial."</p>
+      </div>
+
+      <figure class="recurso-media">
+        <img src="img/Expediente.webp" alt="Ficha de expediente en blanco con espacio para nombre, cualidades y una lupa dibujada en la esquina." class="achicarImg">
+      </figure>
+
+      <form class="actividad" aria-labelledby="act1-titulo" onsubmit="return false;">
+        <div class="actividad__cabecera">
+          <span class="actividad__icono" aria-hidden="true">🗒️</span>
+          <h2 class="actividad__titulo" id="act1-titulo">Actividad 1 — El Primer Interrogatorio</h2>
+        </div>
+        <p class="microtexto">Responde en tu terminal de detective (máximo 5 líneas por respuesta):</p>
+
+        <div class="campo-formulario">
+          <label for="p1">1. ¿Cuál es tu héroe o heroína favorito/a y por qué?</label>
+          <textarea id="p1" aria-describedby="contador1"></textarea>
+        </div>
+        <div class="campo-formulario">
+          <label for="p2">2. En tu opinión, ¿qué hace que una persona sea considerada realmente un héroe o una heroína hoy?</label>
+          <textarea id="p2"></textarea>
+        </div>
+        <div class="campo-formulario">
+          <label for="p3">3. Para describir a un sospechoso o a un aliado, ¿qué <button type="button" class="termino-clave" onclick="medAbrirGlosario('adjetivo')">adjetivos</button> usarías para que tu informe sea preciso?</label>
+          <textarea id="p3" aria-describedby="contador-general"></textarea>
+        </div>
+        <p class="contador-caracteres" id="contador-general">0 caracteres en la última respuesta</p>
+        <button type="button" class="btn btn-primario" id="btn-enviar-1">Guardar en mi expediente</button>
+        <div class="feedback" id="feedback-1" aria-live="polite"></div>
+      </form>
+
+      <div class="actividad" aria-labelledby="act-desafio-titulo">
+        <div class="actividad__cabecera">
+          <span class="actividad__icono" aria-hidden="true">⚡</span>
+          <h2 class="actividad__titulo" id="act-desafio-titulo">Actividad 3 - Desafío Rápido de Campo</h2>
+        </div>
+        <p class="microtexto">Nombra tres héroes o heroínas de películas, libros o series que admires y escribe una cualidad fundamental de cada uno.</p>
+        <div class="campo-formulario"><label for="d1">Héroe/heroína 1 y su cualidad</label><input type="text" id="d1"></div>
+        <div class="campo-formulario"><label for="d2">Héroe/heroína 2 y su cualidad</label><input type="text" id="d2"></div>
+        <div class="campo-formulario"><label for="d3">Héroe/heroína 3 y su cualidad</label><input type="text" id="d3"></div>
+        <button type="button" class="btn btn-primario" id="btn-enviar-2">Cerrar el desafío</button>
+        <div class="feedback" id="feedback-2" aria-live="polite"></div>
+      </div>
+
+      <!-- <div class="recurso-media"> -->
+        <!-- <span class="recurso-media__icono" aria-hidden="true">🎧</span> -->
+        <!-- <div><strong>Audio — "Misión de Reclutamiento"</strong> -->
+        <!-- <p class="recurso-media__guion">Guion: "¡Bienvenido a la Agencia de Detectives de Mitos, recluta! [...] Para empezar, abre tu expediente y dinos: ¿quién es tu héroe o heroína favorito en la actualidad? ¿Qué pistas o cualidades lo hacen especial? ¡Prepara tu lupa, la investigación comienza ahora!"</p></div> -->
+      <!-- </div> -->
+
+      <div class="navegacion-pasos">
+        <a class="btn btn-secundario" id="nav-anterior" href="index.html">⟵ Anterior</a>
+        <a class="btn btn-dorado" id="nav-siguiente" href="objetivos.html">Siguiente ⟶</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<button class="btn-ayuda-flotante" aria-label="Pistas de detective / ayuda" onclick="medMostrarAyuda('No hay respuestas incorrectas en esta misión: se trata de tu opinión. Escribe con tus propias palabras y usa al menos un adjetivo para describir a tu héroe favorito.')">🔎</button>
+
+<div class="modal-overlay" id="modal-glosario" role="dialog" aria-modal="true" aria-labelledby="modal-glosario-titulo">
+  <div class="modal-caja" tabindex="-1"><button class="modal-cerrar" aria-label="Cerrar ventana" onclick="medCerrarGlosario()">✕</button><h3 id="modal-glosario-titulo"></h3><p id="modal-glosario-texto"></p></div>
+</div>
+
+<footer class="med-footer"><p>Detectives de Mitos: ¿Dónde están los héroes y heroínas hoy? — Material Educativo Digital construido por Liliana Mabel Brezicki.</p>
+<script>
+const TEXTO_AUDIO = "Bienvenido a la Agencia de Detectives de Mitos, recluta. Se te ha asignado un caso de máxima prioridad. Para empezar, abre tu expediente y dinos: quién es tu héroe o heroína favorito en la actualidad, y qué cualidades lo hacen especial.";
+</script>
+<script src="js/nav.js"></script>
+<script src="js/activities.js"></script>
+<script>
+medInicializarPagina('mision-reclutamiento');
+document.addEventListener('DOMContentLoaded', () => {
+  medConfigurarRespuestaLibre('p3','contador-general','btn-enviar-1','feedback-1',
+    '¡Buen trabajo, detective! Tus sospechas son interesantes. ¿Crees que los héroes antiguos, como Hércules, tenían esas mismas cualidades o eran totalmente diferentes? Lo descubriremos analizando las pistas en el mito. Continúa a la Hoja de Ruta para conocer toda la investigación.',
+    'perfil-inicial', 15);
+  const btn2 = document.getElementById('btn-enviar-2');
+  btn2.addEventListener('click', () => {
+    const valores = [document.getElementById('d1').value, document.getElementById('d2').value, document.getElementById('d3').value];
+    const completos = valores.filter(v => v.trim().length > 3).length;
+    if(completos < 2){
+      medMostrarFeedback('feedback-2', false, '', 'Tu desafío rápido necesita al menos dos héroes con su cualidad. Agrega más pistas antes de cerrar el caso.');
+    } else {
+      medMostrarFeedback('feedback-2', true, 'Excelente reclutamiento de evidencia. Guardamos tus tres sospechosos favoritos en el expediente: los compararemos más adelante con los héroes clásicos.', '');
+      medMarcarLogro('desafio-reclutamiento');
+    }
+  });
+});
+</script>
+</body>
+</html>
