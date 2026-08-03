@@ -97,12 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    /* Guardamos explícitamente el valor actual del cuadro (por si el detective lo
-       editó después de la precarga) antes de generar el expediente, para que el
-       .txt refleje siempre la última versión escrita, no una copia desactualizada. */
     medGuardarRespuesta('produccion-final', 'texto-final', medEtiquetaParaCampo(campoFinalEl), campoFinalEl.value);
 
-    /* Descargamos el expediente completo (.txt) con TODAS las respuestas de las 12 pantallas */
     const archivo = medDescargarInformeTexto();
 
     const el = document.getElementById('feedback-entrega');

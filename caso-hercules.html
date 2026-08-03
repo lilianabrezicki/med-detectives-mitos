@@ -32,10 +32,6 @@
         <div class="actividad__cabecera"><span class="actividad__icono" aria-hidden="true">🖼️</span><h2 class="actividad__titulo" id="act7-titulo">Actividad 7 — Observa con atención la Imagen</h2></div>
         <figure class="recurso-media">
                   <img src="img/Leon.webp" alt="Silueta de un guerrero con arco frente a un enorme león dorado, en un paisaje rocoso al atardecer." class="achicarImg">
-
-          <!-- <span class="recurso-media__icono" aria-hidden="true">🖼️</span>
-          <figcaption><strong>Imagen sugerida:</strong> silueta de un guerrero enfrentando a un león de melena dorada al atardecer, estilo ilustración dramática.
-          <br><em>Texto alternativo:</em> "Silueta de un guerrero con arco frente a un enorme león dorado, en un paisaje rocoso al atardecer."</figcaption> -->
         </figure>
         <div class="campo-formulario">
           <label for="p7">Antes de leer: al ver esta imagen, ¿qué crees que va a pasar en este mito?</label>
@@ -51,7 +47,6 @@
 
         <div class="texto-resaltable">
 
-          <!-- Bloque 1 -->
           <div class="bloque-lectura" id="bloque-8-1" data-bloque="1">
             <div class="bloque-lectura__audio">
               <button class="btn btn-secundario btn-audio-bloque" type="button" data-bloque="1" aria-pressed="false">🔊 Escuchar este fragmento</button>
@@ -76,7 +71,6 @@
             <button class="btn btn-primario btn-continuar" id="btn-abrir-pregunta-1" type="button" data-siguiente-bloque="bloque-8-2">🤔 Pausa de detective: responde para seguir leyendo</button>
           </div>
 
-          <!-- Bloque 2 (oculto hasta responder la pregunta 1) -->
           <div class="bloque-lectura oculto" id="bloque-8-2" data-bloque="2" tabindex="-1">
             <div class="bloque-lectura__audio">
               <button class="btn btn-secundario btn-audio-bloque" type="button" data-bloque="2" aria-pressed="false">🔊 Escuchar este fragmento</button>
@@ -94,7 +88,6 @@
             <button class="btn btn-primario btn-continuar" id="btn-abrir-pregunta-2" type="button" data-siguiente-bloque="bloque-8-3">🤔 Pausa de detective: responde para seguir</button>
           </div>
 
-          <!-- Bloque 3: organizador visual + informe final (oculto hasta responder la pregunta 2) -->
           <div class="bloque-lectura oculto" id="bloque-8-3" data-bloque="3" tabindex="-1">
 
             <div class="organizador-antes-despues">
@@ -157,7 +150,6 @@
             <div class="feedback" id="feedback-8" aria-live="polite"></div>
           </div>
 
-          <!-- Bloque 4: cierre, comparación con la predicción de la Actividad 7 -->
           <div class="bloque-lectura oculto cierre-prediccion" id="bloque-8-4" tabindex="-1">
             <h3>🔁 Cierra el expediente: ¿acertaste tu predicción?</h3>
             <p class="microtexto">Antes de leer, en la Actividad 7, escribiste esta hipótesis al ver la imagen del león:</p>
@@ -237,13 +229,6 @@
 <script>
 const TEXTO_AUDIO = "Hércules se encontró frente al león de Nemea. El rugido de la fiera hacía temblar el suelo. Tomó su arco y disparó una flecha, pero esta rebotó en el pelaje dorado como si fuera piedra. Alto ahí, detective: analiza la escena. Por qué crees que Hércules no puede usar sus flechas. Continúa la lectura para descubrir cómo usará su ingenio.";
 
-/* ---------- Guardado de respuestas de la Actividad 8 ----------
-   Los campos con id (p7, p8a, p8b, los selects del organizador, p8-cierre-*)
-   ya se guardan automáticamente vía medConfigurarAutoguardado() en nav.js.
-   Solo hace falta guardar a mano el textarea del modal de autoexplicación,
-   porque reutiliza el mismo id para las dos preguntas. */
-
-/* ---------- Preguntas de autoexplicación (con caja de respuesta real) ---------- */
 const MED_PREGUNTAS_AUTOEXP = {
   1: {
     texto: '¿Por qué crees que Hércules no puede vencer al león usando sus flechas? ¿Qué nos dice esto sobre su enemigo? Piénsalo antes de seguir leyendo.',
@@ -325,7 +310,6 @@ document.getElementById('btn-abrir-pregunta-2').addEventListener('click', functi
   medAbrirModalAutoexplicacion(2, this);
 });
 
-/* ---------- Audio por fragmento, con resaltado del bloque mientras se lee ---------- */
 document.querySelectorAll('.btn-audio-bloque').forEach(boton => {
   boton.addEventListener('click', function(){
     const numeroBloque = this.dataset.bloque;
@@ -341,7 +325,6 @@ document.querySelectorAll('.btn-audio-bloque').forEach(boton => {
       return;
     }
 
-    /* Cancelamos cualquier otra lectura en curso (de este botón o del botón de cabecera) */
     window.speechSynthesis.cancel();
     document.querySelectorAll('.btn-audio-bloque[aria-pressed="true"]').forEach(b => {
       b.setAttribute('aria-pressed','false'); b.innerHTML = '🔊 Escuchar este fragmento';
@@ -366,7 +349,6 @@ document.querySelectorAll('.btn-audio-bloque').forEach(boton => {
   });
 });
 
-/* ---------- Organizador visual Antes / Después ---------- */
 document.getElementById('btn-verificar-organizador').addEventListener('click', () => {
   const campos = {
     'organizador-herramienta-antes': 'arco',
@@ -391,7 +373,6 @@ document.getElementById('btn-verificar-organizador').addEventListener('click', (
   }
 });
 
-/* ---------- Informe final de la Actividad 8, con feedback específico según el contenido ---------- */
 function medConfigurarRespuestaHercules(){
   const p8a = document.getElementById('p8a');
   const p8b = document.getElementById('p8b');
@@ -437,7 +418,6 @@ function medConfigurarRespuestaHercules(){
 }
 medConfigurarRespuestaHercules();
 
-/* ---------- Cierre: comparación con la predicción de la Actividad 7 ---------- */
 document.getElementById('btn-cierre-prediccion').addEventListener('click', () => {
   const opcion = document.getElementById('p8-cierre-opcion').value;
   const texto = document.getElementById('p8-cierre-texto').value.trim();
@@ -466,7 +446,6 @@ document.addEventListener('DOMContentLoaded', () => {
     medVerificarClasificacion(['col-verdadero','col-falso'], 'feedback-9', solucion9, 'comprension-hercules');
   });
 
-  /* ---------- Restaurar el avance de la Actividad 8 si el detective ya la había hecho antes ---------- */
   function medRestaurarAvanceHercules(){
     if(medTieneLogro('autoexplicacion-1')){
       const bloque2 = document.getElementById('bloque-8-2');
