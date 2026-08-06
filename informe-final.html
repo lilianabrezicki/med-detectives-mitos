@@ -84,20 +84,51 @@ const TEXTO_AUDIO = "Caso casi cerrado, detective. Ahora te toca a ti: diseña u
 <script>
 medInicializarPagina('informe-final');
 document.addEventListener('DOMContentLoaded', () => {
-  const campos = ['nombre-heroe','problema','descripcion-heroe','viaje-heroe'].map(id => document.getElementById(id));
+  const campoNombre = document.getElementById('nombre-heroe');
+  const campoProblema = document.getElementById('problema');
+  const campoDescripcion = document.getElementById('descripcion-heroe');
+  const campoViaje = document.getElementById('viaje-heroe');
+  const campos = [campoNombre, campoProblema, campoDescripcion, campoViaje];
   const contador = document.getElementById('contador-informe');
   function actualizarContador(){
     const total = campos.reduce((acc,c) => acc + c.value.length, 0);
-    contador.textContent = `${total} caracteres en total`;
+    const { cantidad } = medContarAdjetivos(campoDescripcion.value);
+    contador.textContent = `${total} caracteres en total — ${cantidad} adjetivo${cantidad === 1 ? '' : 's'} detectado${cantidad === 1 ? '' : 's'} en la descripción (mínimo 3)`;
   }
   campos.forEach(c => c.addEventListener('input', actualizarContador));
+  actualizarContador();
   document.getElementById('btn-enviar-informe').addEventListener('click', () => {
-    const total = campos.reduce((acc,c) => acc + c.value.trim().length, 0);
-    if(total < 40){
+    const nombre = campoNombre.value.trim();
+    const problema = campoProblema.value.trim();
+    const descripcion = campoDescripcion.value.trim();
+    const viaje = campoViaje.value.trim();
+
+    // 1) Cada campo debe estar completo por separado (antes solo se sumaban
+    //    los caracteres de los 4 campos, así que se podía dejar 3 vacíos).
+    const faltantes = [];
+    if(nombre.length < 2) faltantes.push('el nombre de tu héroe o heroína');
+    if(problema.length < 4) faltantes.push('qué problema actual resuelve');
+    if(descripcion.length < 20) faltantes.push('una descripción más desarrollada (al menos 20 caracteres)');
+    if(viaje.length < 20) faltantes.push('su Viaje del Héroe: llamado, pruebas y transformación (al menos 20 caracteres)');
+    if(faltantes.length){
       medMostrarFeedback('feedback-informe', false, '',
-        'Tu ficha todavía está incompleta, detective. Un buen informe necesita nombre, problema a resolver, descripción y viaje del héroe. Completa los campos que faltan.');
+        `Tu ficha todavía está incompleta, detective. Completa: ${faltantes.join('; ')}.`);
       return;
     }
+
+    // 2) La consigna pide explícitamente usar al menos 3 adjetivos en la
+    //    descripción del personaje: lo controlamos igual que en el
+    //    Laboratorio Gramatical, mostrando qué palabras ya detectamos.
+    const { cantidad, palabras } = medContarAdjetivos(descripcion);
+    if(cantidad < 3){
+      const detalle = palabras.length
+        ? ` Hasta ahora detectamos ${cantidad}: ${palabras.join(', ')}.`
+        : ' Todavía no detectamos ningún adjetivo en tu descripción.';
+      medMostrarFeedback('feedback-informe', false, '',
+        `Tu descripción necesita al menos 3 adjetivos que caractericen a tu personaje (por ejemplo: valiente, astuto, decidido).${detalle} Agrega más recursos descriptivos y vuelve a intentarlo.`);
+      return;
+    }
+
     medMostrarFeedback('feedback-informe', true,
       'Borrador recibido en el expediente. Buen trabajo dando forma a tu personaje. Ahora pasa a la Autoevaluación para revisar ortografía, cohesión y adecuación con la rúbrica interactiva antes de la entrega definitiva.', '');
     medMarcarLogro('borrador-heroe');
