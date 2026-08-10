@@ -308,6 +308,11 @@ display: block; /* Obligatorio para que margin: auto funcione */
   font-size:.88rem; color:var(--gris-oscuro); font-weight:600;
 }
 .detective-chip:hover{ background:var(--dorado-claro); border-color:var(--dorado); }
+.detective-chip--resuelto{
+  background:var(--rojo-error-fondo); border-color:var(--rojo-sello); color:var(--gris-oscuro); cursor:pointer;
+}
+.detective-chip--resuelto:hover{ background:var(--rojo-error-fondo); border-color:var(--rojo-sello); }
+.detective-chip__sello{ font-size:.78rem; font-weight:700; color:var(--rojo-sello); }
 
 .detective-acciones-inicio{ margin-top:10px; }
 
