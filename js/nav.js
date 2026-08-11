@@ -103,6 +103,20 @@ function medTieneLogro(clave){
   return !!(datos.logros && datos.logros[clave]);
 }
 
+function medObtenerDatosDetectivePorNombre(nombre){
+  try{
+    const datos = JSON.parse(localStorage.getItem(medClaveDatosDetective(nombre)) || '{}');
+    return datos && typeof datos === 'object' ? datos : {};
+  }catch(e){ return {}; }
+}
+/* Un detective "ya superó el caso" cuando llegó a entregar su expediente final
+   (Producción Final), que es el logro que cierra formalmente la investigación.
+   Se usa para impedir que otra persona reutilice ese nombre por error. */
+function medDetectiveCompletoCaso(nombre){
+  const datos = medObtenerDatosDetectivePorNombre(nombre);
+  return !!(datos.logros && datos.logros['entrega-final']);
+}
+
 /* =========================================================================
    Registro genérico de respuestas (para el informe final descargable)
    Cada campo se guarda como { etiqueta, valor, fecha } bajo
@@ -532,6 +546,7 @@ function medAsegurarModalDetective(){
         <input type="text" id="input-nombre-detective" autocomplete="off" placeholder="Ej.: Ana, Marcos...">
         <button class="btn btn-dorado" id="btn-confirmar-detective" type="button">Abrir expediente</button>
       </div>
+      <div class="feedback incorrecto" id="detective-aviso" role="alert" aria-live="polite" style="display:none;"></div>
       <div class="detective-lista-existentes" id="detective-lista-existentes"></div>
     </div>
   `;
@@ -544,7 +559,12 @@ function medAsegurarModalDetective(){
   document.getElementById('btn-confirmar-detective').addEventListener('click', () => {
     const input = document.getElementById('input-nombre-detective');
     const nombre = input.value.trim();
-    if(!nombre){ alert('Por favor, escribe tu nombre de detective.'); return; }
+    if(!nombre){ medMostrarAvisoDetective('Por favor, escribe tu nombre de detective.'); return; }
+    if(medDetectiveCompletoCaso(nombre)){
+      medMostrarAvisoDetective(`El/la detective "${nombre}" ya resolvió por completo este caso (su expediente fue entregado). Si esa investigación es tuya, ya está archivada y no hace falta reabrirla. Si eres otra persona, elige un nombre distinto para abrir tu propio expediente.`);
+      return;
+    }
+    medOcultarAvisoDetective();
     medEstablecerDetectiveActivo(nombre);
     medCerrarModalDetective(true);
     medRefrescarSesionUI();
@@ -552,6 +572,20 @@ function medAsegurarModalDetective(){
   document.getElementById('input-nombre-detective').addEventListener('keydown', (e) => {
     if(e.key === 'Enter'){ e.preventDefault(); document.getElementById('btn-confirmar-detective').click(); }
   });
+  document.getElementById('input-nombre-detective').addEventListener('input', medOcultarAvisoDetective);
+}
+
+function medMostrarAvisoDetective(mensaje){
+  const aviso = document.getElementById('detective-aviso');
+  if(!aviso) return;
+  aviso.textContent = mensaje;
+  aviso.style.display = 'flex';
+}
+function medOcultarAvisoDetective(){
+  const aviso = document.getElementById('detective-aviso');
+  if(!aviso) return;
+  aviso.style.display = 'none';
+  aviso.textContent = '';
 }
 
 function medCerrarModalDetective(forzar){
@@ -573,10 +607,21 @@ function medAbrirModalDetective(obligatorio){
   const lista = medObtenerListaDetectives();
   if(lista.length){
     listaCont.innerHTML = '<p class="detective-lista-titulo">📋 Detectives existentes — toca para continuar sin escribir de nuevo tu nombre:</p>' +
-      lista.map(n => `<button class="detective-chip" data-nombre="${medEscaparHtml(n)}" type="button">🕵️ ${medEscaparHtml(n)}</button>`).join('');
+      lista.map(n => {
+        const completo = medDetectiveCompletoCaso(n);
+        const claseExtra = completo ? ' detective-chip--resuelto' : '';
+        const etiqueta = completo ? ` <span class="detective-chip__sello">✅ Caso resuelto</span>` : '';
+        return `<button class="detective-chip${claseExtra}" data-nombre="${medEscaparHtml(n)}" data-resuelto="${completo ? 'true' : 'false'}" type="button">🕵️ ${medEscaparHtml(n)}${etiqueta}</button>`;
+      }).join('');
     listaCont.querySelectorAll('.detective-chip').forEach(btn => {
       btn.addEventListener('click', () => {
-        medEstablecerDetectiveActivo(btn.dataset.nombre);
+        const nombre = btn.dataset.nombre;
+        if(btn.dataset.resuelto === 'true'){
+          medMostrarAvisoDetective(`El/la detective "${nombre}" ya resolvió por completo este caso (su expediente fue entregado). Si esa investigación es tuya, ya está archivada. Si eres otra persona, escribe un nombre distinto arriba para abrir tu propio expediente.`);
+          return;
+        }
+        medOcultarAvisoDetective();
+        medEstablecerDetectiveActivo(nombre);
         medCerrarModalDetective(true);
         medRefrescarSesionUI();
       });
@@ -586,6 +631,7 @@ function medAbrirModalDetective(obligatorio){
   }
   const input = document.getElementById('input-nombre-detective');
   if(input) input.value = '';
+  medOcultarAvisoDetective();
   overlay.classList.add('abierto');
   const caja = overlay.querySelector('.modal-caja');
   if(caja) caja.focus();

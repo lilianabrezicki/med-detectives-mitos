@@ -44,13 +44,103 @@ function medConfigurarOpcionMultiple(idContenedor, idFeedback, correctaValor, te
   });
 }
 
-/* ---------- Respuesta libre (cuadro de texto) con contador y feedback fijo ---------- */
-function medConfigurarRespuestaLibre(idTextarea, idContador, idBotonEnviar, idFeedback, textoFeedback, logroClave, minCaracteres){
+/* ---------- Detector heurístico de adjetivos en español ----------
+   No existe un analizador gramatical real en el navegador, así que esta
+   función combina (a) un diccionario de adjetivos frecuentes y pertinentes
+   al tema del caso (cualidades físicas, de carácter y de peligrosidad) con
+   (b) un conjunto reducido de sufijos que en español casi siempre marcan un
+   adjetivo (-oso/-osa, -ico/-ica, -ivo/-iva, -ante, -ente, -ible, -able).
+   Es una aproximación pedagógica, no un análisis morfosintáctico exacto:
+   por eso el feedback siempre muestra qué palabras detectó, para que el
+   propio estudiante pueda revisar y corregir si el sistema se equivocó. */
+const MED_DICCIONARIO_ADJETIVOS = new Set([
+  'fuerte','fuertes','débil','débiles','enorme','enormes','gigante','gigantes',
+  'pequeño','pequeña','pequeños','pequeñas','alto','alta','altos','altas',
+  'bajo','baja','bajos','bajas','ágil','ágiles','veloz','veloces',
+  'rápido','rápida','rápidos','rápidas','lento','lenta','lentos','lentas',
+  'robusto','robusta','musculoso','musculosa','delgado','delgada',
+  'joven','jóvenes','anciano','anciana','ancianos','ancianas',
+  'hermoso','hermosa','hermosos','hermosas','feo','fea','feos','feas',
+  'invulnerable','invulnerables','poderoso','poderosa','poderosos','poderosas',
+  'valiente','valientes','valeroso','valerosa','valerosos','valerosas',
+  'audaz','audaces','intrépido','intrépida','intrépidos','intrépidas',
+  'astuto','astuta','astutos','astutas','sabio','sabia','sabios','sabias',
+  'inteligente','inteligentes','ingenioso','ingeniosa','ingeniosos','ingeniosas',
+  'leal','leales','fiel','fieles','honesto','honesta','honestos','honestas',
+  'justo','justa','justos','justas','generoso','generosa','generosos','generosas',
+  'solidario','solidaria','solidarios','solidarias','compasivo','compasiva','compasivos','compasivas',
+  'empático','empática','empáticos','empáticas','altruista','altruistas',
+  'humilde','humildes','noble','nobles','comprometido','comprometida','comprometidos','comprometidas',
+  'decidido','decidida','decididos','decididas','perseverante','perseverantes',
+  'tenaz','tenaces','paciente','pacientes','amable','amables','gentil','gentiles',
+  'carismático','carismática','carismáticos','carismáticas',
+  'protector','protectora','protectores','protectoras',
+  'responsable','responsables','disciplinado','disciplinada','disciplinados','disciplinadas',
+  'curioso','curiosa','curiosos','curiosas','creativo','creativa','creativos','creativas',
+  'extrovertido','extrovertida','tímido','tímida','tímidos','tímidas',
+  'feroz','feroces','temible','temibles','salvaje','salvajes',
+  'peligroso','peligrosa','peligrosos','peligrosas',
+  'misterioso','misteriosa','misteriosos','misteriosas',
+  'oscuro','oscura','oscuros','oscuras','luminoso','luminosa','luminosos','luminosas',
+  'brillante','brillantes','silencioso','silenciosa','silenciosos','silenciosas',
+  'indestructible','indestructibles','resistente','resistentes',
+  'implacable','implacables','despiadado','despiadada','despiadados','despiadadas',
+  'malvado','malvada','malvados','malvadas','cruel','crueles','terrible','terribles',
+  'monstruoso','monstruosa','monstruosos','monstruosas',
+  'grande','grandes','bueno','buena','buenos','buenas','malo','mala','malos','malas',
+  'nuevo','nueva','nuevos','nuevas','viejo','vieja','viejos','viejas',
+  'importante','importantes','difícil','difíciles','fácil','fáciles',
+  'especial','especiales','único','única','únicos','únicas',
+  'real','reales','actual','actuales','moderno','moderna','modernos','modernas',
+  'clásico','clásica','clásicos','clásicas','admirable','admirables',
+  'ejemplar','ejemplares','extraordinario','extraordinaria','extraordinarios','extraordinarias'
+]);
+const MED_SUFIJOS_ADJETIVO = [/osos?$/,/osas?$/,/icos?$/,/icas?$/,/ivos?$/,/ivas?$/,/antes?$/,/entes?$/,/ibles?$/,/ables?$/];
+
+function medEsAdjetivoProbable(palabraOriginal){
+  const palabra = palabraOriginal.toLowerCase().replace(/[^a-záéíóúüñ]/g,'');
+  if(palabra.length < 4) return false;
+  if(MED_DICCIONARIO_ADJETIVOS.has(palabra)) return true;
+  return MED_SUFIJOS_ADJETIVO.some(regex => regex.test(palabra));
+}
+
+/* Cuenta adjetivos DISTINTOS (sin repetir la misma palabra dos veces) en un
+   texto libre. Devuelve la cantidad y la lista de palabras detectadas, para
+   poder mostrárselas al estudiante como parte del feedback. */
+function medContarAdjetivos(texto){
+  const palabras = (texto || '').split(/[^a-záéíóúüñA-ZÁÉÍÓÚÜÑ]+/).filter(Boolean);
+  const vistos = new Set();
+  const encontrados = [];
+  palabras.forEach(p => {
+    const clave = p.toLowerCase();
+    if(!vistos.has(clave) && medEsAdjetivoProbable(p)){
+      vistos.add(clave);
+      encontrados.push(p);
+    }
+  });
+  return { cantidad: encontrados.length, palabras: encontrados };
+}
+
+/* ---------- Respuesta libre (cuadro de texto) con contador y feedback fijo ----------
+   minAdjetivos (opcional): si la consigna pide "usa al menos N adjetivos",
+   pasar ese número aquí. El contador de caracteres se convierte también en
+   contador de adjetivos detectados en vivo, y el envío se bloquea con un
+   feedback específico (mostrando qué adjetivos ya se detectaron) si no se
+   alcanza el mínimo pedido. */
+function medConfigurarRespuestaLibre(idTextarea, idContador, idBotonEnviar, idFeedback, textoFeedback, logroClave, minCaracteres, minAdjetivos){
   const textarea = document.getElementById(idTextarea);
   const contador = document.getElementById(idContador);
   const boton = document.getElementById(idBotonEnviar);
   if(!textarea || !boton) return;
-  const actualizarContador = () => { if(contador) contador.textContent = `${textarea.value.length} caracteres`; };
+  const actualizarContador = () => {
+    if(!contador) return;
+    if(minAdjetivos){
+      const { cantidad } = medContarAdjetivos(textarea.value);
+      contador.textContent = `${textarea.value.length} caracteres — ${cantidad} adjetivo${cantidad === 1 ? '' : 's'} detectado${cantidad === 1 ? '' : 's'} (mínimo ${minAdjetivos})`;
+    } else {
+      contador.textContent = `${textarea.value.length} caracteres`;
+    }
+  };
   textarea.addEventListener('input', actualizarContador);
   actualizarContador();
   boton.addEventListener('click', () => {
@@ -59,6 +149,17 @@ function medConfigurarRespuestaLibre(idTextarea, idContador, idBotonEnviar, idFe
       medMostrarFeedback(idFeedback, false,
         '', `Tu informe todavía es muy breve, detective. Agrega más pistas y detalles (al menos ${min} caracteres) antes de continuar.`);
       return;
+    }
+    if(minAdjetivos){
+      const { cantidad, palabras } = medContarAdjetivos(textarea.value);
+      if(cantidad < minAdjetivos){
+        const detalle = palabras.length
+          ? ` Hasta ahora detectamos ${cantidad}: ${palabras.join(', ')}.`
+          : ' Todavía no detectamos ningún adjetivo en tu texto.';
+        medMostrarFeedback(idFeedback, false, '',
+          `La consigna pide al menos ${minAdjetivos} adjetivo${minAdjetivos === 1 ? '' : 's'} (palabras que describan una cualidad, como "feroz" o "valiente").${detalle} Agrega más recursos descriptivos y vuelve a intentarlo.`);
+        return;
+      }
     }
     medMostrarFeedback(idFeedback, true, textoFeedback, '');
     if(logroClave) medMarcarLogro(logroClave);
