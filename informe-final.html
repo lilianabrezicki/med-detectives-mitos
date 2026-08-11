@@ -132,6 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
     medMostrarFeedback('feedback-informe', true,
       'Borrador recibido en el expediente. Buen trabajo dando forma a tu personaje. Ahora pasa a la Autoevaluación para revisar ortografía, cohesión y adecuación con la rúbrica interactiva antes de la entrega definitiva.', '');
     medMarcarLogro('borrador-heroe');
+
+    // Una vez enviado correctamente, se deshabilita el botón para evitar
+    // reenvíos del mismo borrador.
+    const botonEnviar = document.getElementById('btn-enviar-informe');
+    botonEnviar.disabled = true;
+    botonEnviar.textContent = 'Borrador enviado ✔';
   });
 });
 </script>
